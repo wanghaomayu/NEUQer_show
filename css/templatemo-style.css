@@ -831,3 +831,142 @@ ul
 }
 .navbar-header{background:black;}
 /* end 360 media quires */
+
+
+
+/*文艺范儿*/
+#pricing .col {
+  overflow: hidden;
+  position: relative;
+}
+
+#pricing .slide {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  /*
+    Visibility delay gives the previously hovered element time to slide out before disappearing.
+    Remove the `visibility` transition to slide in current element without sliding out previous element
+  */
+  -webkit-transition: all 0.275s ease-in-out, visibility 0s 0.275s;
+  transition: all 0.275s ease-in-out, visibility 0s 0.275s;
+  visibility: hidden;
+  will-change: transform;
+  -webkit-transform: translateY(100%);
+  transform: translateY(100%);
+}
+
+#pricing .row:hover ~ .row .slide {
+  -webkit-transform: translateY(-100%);
+  transform: translateY(-100%);
+}
+#pricing .row:hover .slide {
+  -webkit-transform: translateX(100%);
+  transform: translateX(100%);
+}
+#pricing .row:hover .col:hover ~ .col .slide {
+  -webkit-transform: translateX(-100%);
+  transform: translateX(-100%);
+}
+#pricing .row:hover .col:hover .slide {
+  -webkit-transform: none;
+  transform: none;
+  visibility: visible;
+  -webkit-transition-delay: 0s;
+  transition-delay: 0s;
+}
+
+/* Pen styling */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: #fefefe;
+  color: #333;
+  font: 14px /1.5 "Fira Sans", sans-serif;
+}
+
+#pricing h1 {
+  font-size: 2.5rem;
+  font-weight: 300;
+  margin: 1.5em 0.5rem 1em;
+  text-align: center;
+}
+
+#pricing .container {
+  margin: 0 auto;
+  padding: 2rem;
+  max-width: 1200px;
+}
+
+#pricing .row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+#pricing .col {
+  color: #fff;
+  -webkit-box-flex: 1;
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
+  min-height: 260px;
+  position: relative;
+}
+#pricing .col h2 {
+  font-weight: 300;
+  font-size: 1.33333rem;
+  line-height: 1.25;
+  margin: 0;
+  position: absolute;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  z-index: 0;
+}
+
+#pricing .col:nth-child(2) {
+  min-width: 20%;
+}
+
+#pricing .col:nth-child(4) {
+  min-width: 33%;
+}
+
+#pricing .col:nth-child(3) + .col:nth-child(3) {
+  min-width: 50%;
+}
+
+#pricing .photo-container {
+  background: #0f0523 50% 50% / cover;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  -webkit-transition: 1s;
+  transition: 1s;
+  -webkit-transform-origin: bottom right;
+  transform-origin: bottom right;
+}
+#pricing .photo-container::before {
+  background: -webkit-linear-gradient(transparent, rgba(67, 17, 51, 0.5), #000320);
+  background: linear-gradient(transparent, rgba(67, 17, 51, 0.5), #000320);
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+#pricing .col:hover .photo-container {
+  -webkit-transform: scale(1.25);
+  transform: scale(1.25);
+}
+
+#pricing .slide {
+  background: rgba(25, 1, 21, 0.8);
+  padding: 0 1.5rem;
+}
