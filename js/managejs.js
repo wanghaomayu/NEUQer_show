@@ -1,3 +1,4 @@
+//管理版块js
 var FeiChao = window.FeiChao ||{};
 FeiChao.Organ = function(){
 document.onreadystatechange = Organadvert;

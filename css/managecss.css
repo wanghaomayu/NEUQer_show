@@ -1,9 +1,9 @@
 html{font-family: "Microsoft YaHei";}
 body{background-repeat:no-repeat;}
 *{padding:0px;margin:0px;list-style: none;}
-.mian{background-color: #ffffff;margin: 0 auto;height:400px;text-align: center;overflow: hidden;width: 720px;margin:0 auto;}
+.mian{background-color: #ffffff;margin: 0 auto;height:400px;text-align: center;overflow: hidden;width:75%;margin:0 auto;}
 .mian span{display: block;margin-top: 10px;}
-.adleft{width:180px;height: 400px;background: #fff;border-right: 1px solid #ececec;padding-top: 45px;padding-left:20px;padding-right: 20px;float:left;}
+.adleft{width:25%;height: 400px;background: #fff;border-right: 1px solid #ececec;padding-top: 45px;padding-left:20px;padding-right: 20px;float:left;}
 .ico{margin: 0 auto;}
 .title{letter-spacing: 2px;margin-bottom: 10px;color: #7b7b7b;}
 

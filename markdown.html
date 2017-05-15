@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>简易markdown</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        html, body {
+            height: 100%;
+            font-size: 14px;
+            font-family: -apple-system, "SF UI Text", Arial, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
+        }
+        .left-wrapper, .right-wrapper {
+            float: left;
+            overflow: auto;
+            width: 50%;
+            height: 100%;
+        }
+        .left-wrapper {
+            padding-top: 20px;
+            box-sizing: border-box;
+            border-right: 1px solid #d9d9d9;
+            background: #fff;
+        }
+        .right-wrapper {
+            box-sizing: border-box;
+            background: #fcfaf2;
+        }
+        #titleInput {
+            overflow: hidden;
+            padding: 0 30px 10px 40px;
+            width: 100%;
+            box-sizing: border-box;
+            line-height: 20px;
+            font-size: 30px;
+            color: #555;
+            text-overflow: ellipsis;
+            font-weight: normal;
+            border-style: none;
+            outline: none;
+        }
+        .tools {
+            width: 100%;
+            height: 30px;
+            border-bottom: 1px solid #d9d9d9;
+            background-color: #dedede;
+        }
+        #articleInput {
+            padding: 40px 40px 0;
+            width: 100%;
+            height: 100%;
+            box-sizing: border-box;
+            line-height: 30px;
+            font-size: 18px;
+            color: #2f2f2f;
+            outline: none;
+            border-style: none;
+            resize: none;
+            box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+        }
+        .output {
+            overflow-y: auto;
+            padding: 40px 40px 0;
+            width: 100%;
+            height: 100%;
+            box-sizing: border-box;
+            color: #2f2f2f;
+            font-size: 16px;
+            line-height: 1.7;
+        }
+        #titleOutput {
+            word-wrap: break-word;
+            margin-bottom: 20px;
+        }
+        #articleOutput {
+            word-wrap: break-word;
+        }
+        #articleOutput li {
+            position: relative;
+            left: 40px;
+        }
+        #articleOutput pre {
+            overflow: auto;
+            margin-bottom: 20px;
+            padding: 9.5px;
+            font-size: 13px;
+            line-height: 20px;
+            color: #657b83;
+            border: 1px solid rgba(0, 0, 0, 0.15);
+            background: #f6f6f6;
+        }
+        #articleOutput blockquote {
+            padding: 20px;
+            margin-bottom: 25px;
+            font-size: 16px;
+            font-weight: normal;
+            line-height: 30px;
+            background-color: whitesmoke;
+            border-left: 6px solid #b4b4b4;
+        }
+    </style>
+</head>
+<body>
+<div class="left-wrapper">
+    <input type="text" id="titleInput" value="无标题文章">
+    <ul class="tools"></ul>
+    <textarea id="articleInput"></textarea>
+</div>
+<div class="right-wrapper">
+    <div class="output">
+        <h1 id="titleOutput"></h1>
+        <div id="articleOutput"></div>
+    </div>
+</div>
+<script>
+  window.onload = () => {
+//          获取到对应的输入输出节点
+    const titleInput = document.getElementById('titleInput');
+    let titleOutput = document.getElementById('titleOutput');
+//          默认选中方便用户删除
+    titleInput.select();
+//          节流函数避免连续触发事件
+    let throttle = (method) => {
+      method.tId && clearTimeout(method.tId);
+      method.tId = setTimeout(function () {
+        method();
+      }, 140);
+    };
+//          输出标题的函数
+    let addTitle = () => {
+      titleOutput.innerHTML = titleInput.value;
+    };
+//          输出默认的占位符
+    addTitle();
+//          绑定按下键盘触发，keypress对功能键、中文输入法没有反应
+    titleInput.addEventListener('keyup', () => {
+      throttle(addTitle);
+  });
+//              定义标题循环次数
+    const circles = 6;
+//              处理html标签
+    const reg1 = /(<)([^>]+)(>)/g;
+//              判断是否需要循环
+    const reg2 = /^ *#{1,6}(( +[^\s]|[^#\s]).*)/gm;
+//              reg3用来循环改变标题
+    let reg3;
+//              给符合格式的创建ul和li
+    const reg4 = /(^ *|<\/.+>) *- (\S.*)/gm;
+//              给符合格式的创建ol和li
+    const reg5 = /(^ *|\/.+>) *\d\. (\S.*)/gm;
+//              去掉多余的ul、ol
+    const reg6 = /<\/([uo]l)>\n? *<\1>/g;
+//              blockquote
+    const reg7 = /(^ *|\/.+>) *&gt; ((\S.*\n?)+)/gm;
+//              单行代码
+    const reg8 = /(^ *|\/.+>) *`([^`\n]+)`/gm;
+//              代码块
+    const reg9 = /~~~\n((.*\n)+)~~~/g;
+//              br
+    const reg10 = /([^>\n]+)\n/g;
+    const articleInput = document.getElementById('articleInput');
+    let articleOutput = document.getElementById('articleOutput');
+//         输出文章的函数
+    let addArticle = () => {
+      articleOutput.innerHTML = articleInput.value
+        .replace(reg1, '<<span>$2</span>>');
+      if (articleInput.value.match(reg2)) {
+        for (let i = circles; i > 0; i--) {
+          reg3 = new RegExp(`^ *(#{${i}})(( +[^\s]|[^#\s]).*)(\n?)`, 'gm');
+          articleOutput.innerHTML = articleOutput.innerHTML.replace(reg3, `<h${i}>$2</h${i}>`);
+        }
+      }
+      articleOutput.innerHTML = articleOutput.innerHTML.replace(reg4, '$1<ul><li>$2</li></ul>')
+        .replace(reg5, '$1<ol><li>$2</li></ol>').replace(reg6, '')
+        .replace(reg7, '$1<blockquote>$2</blockquote>')
+        .replace(reg8, '<pre>$2</pre>')
+        .replace(reg9, '<pre>$1</pre>').replace(reg10, '$1<br>');
+    };
+//          绑定按下键盘触发
+    articleInput.addEventListener('keyup', () => {
+      throttle(addArticle);
+  })
+  }
+</script>
+</body>
+</html>
