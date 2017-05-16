@@ -1,0 +1,103 @@
+<!Doctype html>
+<html lang="en-US" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>消息管理</title>
+<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="css/normalize.css" />
+<style>
+		body {
+            background-color: #fafafa;
+            font-family: 'Microsoft yahei';
+        }
+
+        .container {
+            margin-top: 150px;
+        }
+
+        h1 {
+            padding-bottom: 30px;
+        }
+</style>
+</head>
+<body>
+<div class="container">
+<div class="row">
+	<div class="col-sm-6 col-sm-offset-3">
+
+		<div class="addel">
+
+		  <h2>消息管理</h2>
+
+			<div class="form-group target">
+				<div class="input-group">
+					<input type="text" name="contacts[]" class="form-control" value="HIVU盾是否">
+					<span class="input-group-btn">
+						<button type="button" class="btn btn-danger addel-delete"><i class="fa fa-remove"></i>
+						</button>
+					</span>
+				</div>
+			</div>
+
+			<div class="form-group target">
+				<div class="input-group">
+					<input type="text" name="contacts[]" class="form-control">
+					<span class="input-group-btn">
+						<button type="button" class="btn btn-danger addel-delete"><i class="fa fa-remove"></i>
+						</button>
+					</span>
+				</div>
+			</div>
+
+			<div class="form-group target">
+				<div class="input-group">
+					<input type="text" name="contacts[]" class="form-control">
+					<span class="input-group-btn">
+						<button type="button" class="btn btn-danger addel-delete"><i class="fa fa-remove"></i>
+						</button>
+					</span>
+				</div>
+			</div>
+
+			<div class="form-group target">
+				<div class="input-group">
+					<input type="text" name="contacts[]" class="form-control">
+					<span class="input-group-btn">
+						<button type="button" class="btn btn-danger addel-delete"><i class="fa fa-remove"></i>
+						</button>
+					</span>
+				</div>
+			</div>
+
+			<button type="button" class="btn btn-success btn-block addel-add"><i class="fa fa-plus"></i></button>
+
+		</div>
+
+	</div>
+</div>
+</div>
+
+<script src="js/jquery-1.12.3.min.js"></script>
+<script src="js/addel.jquery.js"></script>
+<script>
+$(document).ready(function () {
+  $('.addel').addel({
+    classes: {
+      target: 'target'
+    },
+    animation: {
+      duration: 300
+    }
+  }).on('addel:delete', function (event) {
+    if (!window.confirm('Are you absolutely positive you would like to delete: ' + '"' + event.target.find(':input').val() + '"?')) {
+      event.preventDefault()
+    }
+  })
+})
+</script>
+
+</body>
+</html>
