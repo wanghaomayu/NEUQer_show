@@ -201,6 +201,8 @@ h1 { margin: 0; }
     height: 50px;
     width: 250px;
     padding: 12px 10px 10px 10px;
+    position:relative;
+    bottom:20px;
   }
 #home .btn:hover
   {
