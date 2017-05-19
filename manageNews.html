@@ -1,104 +1,206 @@
-<!Doctype html>
-<html lang="en-US" dir="ltr">
+<!--<!Doctype html>-->
+<!--<html lang="en-US" dir="ltr">-->
+<!--<head>-->
+<!--<meta charset="UTF-8">-->
+<!--<meta http-equiv="X-UA-Compatible" content="IE=edge">-->
+<!--<meta name="viewport" content="width=device-width, initial-scale=1">-->
+<!--<title>消息管理</title>-->
+
+<!--<link rel="shortcut icon" href="favicon.ico"/>-->
+<!--<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">-->
+<!--<link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css">-->
+<!--<link rel="stylesheet" href="css/normalize.css" />-->
+<!--<style>-->
+		<!--body {-->
+            <!--background-color: #fafafa;-->
+            <!--font-family: 'Microsoft yahei';-->
+        <!--}-->
+
+        <!--.container {-->
+            <!--margin-top: 100px;-->
+        <!--}-->
+
+        <!--h1 {-->
+            <!--padding-bottom: 30px;-->
+        <!--}-->
+	<!--.manageTitle{-->
+		<!--display: flex;-->
+		<!--justify-content: center;-->
+	<!--}-->
+<!--</style>-->
+<!--</head>-->
+<!--<body>-->
+ <!--<div class="page-header manageTitle">-->
+       <!--<h1>不洗碗工作室日常新闻管理</h1>-->
+    <!--</div>-->
+<!--<div class="container">-->
+<!--<div class="row">-->
+	<!--<div class="col-sm-6 col-sm-offset-3">-->
+
+		<!--<div class="addel">-->
+
+
+			<!--<div class="form-group target">-->
+				<!--<div class="input-group">-->
+					<!--<input type="text" name="contacts[]" class="form-control" value="贾大佬不吃晚饭">-->
+					<!--<span class="input-group-btn">-->
+						<!--<button type="button" class="btn btn-danger addel-delete"><i class="fa fa-remove"></i>-->
+						<!--</button>-->
+					<!--</span>-->
+				<!--</div>-->
+			<!--</div>-->
+
+			<!--<div class="form-group target">-->
+				<!--<div class="input-group">-->
+					<!--<input type="text" name="contacts[]" class="form-control">-->
+					<!--<span class="input-group-btn">-->
+						<!--<button type="button" class="btn btn-danger addel-delete"><i class="fa fa-remove"></i>-->
+						<!--</button>-->
+					<!--</span>-->
+				<!--</div>-->
+			<!--</div>-->
+
+			<!--<div class="form-group target">-->
+				<!--<div class="input-group">-->
+					<!--<input type="text" name="contacts[]" class="form-control">-->
+					<!--<span class="input-group-btn">-->
+						<!--<button type="button" class="btn btn-danger addel-delete"><i class="fa fa-remove"></i>-->
+						<!--</button>-->
+					<!--</span>-->
+				<!--</div>-->
+			<!--</div>-->
+
+			<!--<div class="form-group target">-->
+				<!--<div class="input-group">-->
+					<!--<input type="text" name="contacts[]" class="form-control">-->
+					<!--<span class="input-group-btn">-->
+						<!--<button type="button" class="btn btn-danger addel-delete"><i class="fa fa-remove"></i>-->
+						<!--</button>-->
+					<!--</span>-->
+				<!--</div>-->
+			<!--</div>-->
+
+			<!--<button type="button" class="btn btn-success btn-block addel-add"><i class="fa fa-plus"></i></button>-->
+
+		<!--</div>-->
+
+	<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+
+<!--<script src="js/jquery-1.12.3.min.js"></script>-->
+<!--<script src="js/addel.jquery.js"></script>-->
+<!--<script>-->
+<!--$(document).ready(function () {-->
+  <!--$('.addel').addel({-->
+    <!--classes: {-->
+      <!--target: 'target'-->
+    <!--},-->
+    <!--animation: {-->
+      <!--duration: 300-->
+    <!--}-->
+  <!--}).on('addel:delete', function (event) {-->
+    <!--if (!window.confirm('确定删除: ' + '"' + event.target.find(':input').val() + '"?')) {-->
+      <!--event.preventDefault()-->
+    <!--}-->
+  <!--})-->
+<!--})-->
+<!--</script>-->
+
+<!--</body>-->
+<!--</html>-->
+
+
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>消息管理</title>
-<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="css/normalize.css" />
-<style>
-		body {
-            background-color: #fafafa;
-            font-family: 'Microsoft yahei';
-        }
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-        .container {
-            margin-top: 150px;
-        }
+	<title>jQuery实现动态添加删除移动列表插件 - xw素材网</title>
 
-        h1 {
-            padding-bottom: 30px;
-        }
-</style>
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/git/jquery.mobile-git.css" />
+	<link rel="stylesheet" href="css/editable-listview.css">
+	<link rel="stylesheet" href="css/manageNews.css">
+
+	<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+	<script  src="http://code.jquery.com/mobile/git/jquery.mobile-git.js"></script>
+	<script src="js/collapsible-patched.js"></script>
+	<script src="js/editable-listview.js"></script>
 </head>
-<body>
-<div class="container">
-<div class="row">
-	<div class="col-sm-6 col-sm-offset-3">
 
-		<div class="addel">
+<body style="padding: 20px">
 
-		  <h2>消息管理</h2>
+    <div style="padding: 20px">
+        <!--<p>Delete <strong>"Orange"</strong> from the following list of <strong>"Fruits"</strong></p>-->
+        <!--<ul id="list" data-role="listview">-->
+            <!--<li>Apple</li>-->
+            <!--<li>Orange</li>-->
+            <!--<li>Banana</li>-->
+            <!--<li>Mango</li>-->
+        <!--</ul>-->
 
-			<div class="form-group target">
-				<div class="input-group">
-					<input type="text" name="contacts[]" class="form-control" value="HIVU盾是否">
-					<span class="input-group-btn">
-						<button type="button" class="btn btn-danger addel-delete"><i class="fa fa-remove"></i>
-						</button>
-					</span>
-				</div>
-			</div>
+        <!--<br>-->
 
-			<div class="form-group target">
-				<div class="input-group">
-					<input type="text" name="contacts[]" class="form-control">
-					<span class="input-group-btn">
-						<button type="button" class="btn btn-danger addel-delete"><i class="fa fa-remove"></i>
-						</button>
-					</span>
-				</div>
-			</div>
+        <p>Add <strong>"Running"</strong> and <strong>"Surfing"</strong> in the following list</p>
+        <ul id="list2" data-role="listview" data-editable="true" data-editable-type="simple" data-title="Activities" data-empty-title="No Activities" data-button-theme="b" data-button-shadow="false" data-button-corner="false">
+            <li>Running
+			</li>
+			<span class="input-group-btn">
+			    <i class="glyphicon glyphicon-pencil"></i></span>
+		<li>Cycling</li>
+		<li>Surfing</li>
+		<li>Jogging</li>
+</ul>
 
-			<div class="form-group target">
-				<div class="input-group">
-					<input type="text" name="contacts[]" class="form-control">
-					<span class="input-group-btn">
-						<button type="button" class="btn btn-danger addel-delete"><i class="fa fa-remove"></i>
-						</button>
-					</span>
-				</div>
-			</div>
+<!--<br>-->
 
-			<div class="form-group target">
-				<div class="input-group">
-					<input type="text" name="contacts[]" class="form-control">
-					<span class="input-group-btn">
-						<button type="button" class="btn btn-danger addel-delete"><i class="fa fa-remove"></i>
-						</button>
-					</span>
-				</div>
-			</div>
+        <!--<p>An example of <strong>Complex Editable Listview</strong></p>-->
+        <!--<ul data-role="listview" data-editable="true" data-editable-type="complex" data-editable-form="editing-form" data-title="Fruits" data-empty-title="No Fruits">-->
+            <!--<li>-->
+                <!--<a>-->
+                    <!--<h3>Apple</h3>-->
+                    <!--<p><em>Shape:</em> <strong>round</strong></p>-->
+                    <!--<p><em>Color:</em> <strong>red</strong></p>-->
+                <!--</a>-->
+            <!--</li>-->
+            <!--<li>-->
+                <!--<a>-->
+                    <!--<h3>Pineapple</h3>-->
+                    <!--<p><em>Shape:</em> <strong>oval</strong></p>-->
+                    <!--<p><em>Color:</em> <strong>yellow</strong></p>-->
+                <!--</a>-->
+            <!--</li>-->
+            <!--<li>-->
+                <!--<a>-->
+                    <!--<h3>Orange</h3>-->
+                    <!--<p><em>Shape:</em> <strong>round</strong></p>-->
+                    <!--<p><em>Color:</em> <strong>orange</strong></p>-->
+                <!--</a>-->
+            <!--</li>-->
+        <!--</ul>-->
 
+        <!--<form id="editing-form" data-editable-form="true">-->
+            <!--<input type="text" data-item-name="fruitName" data-item-template="<h3>%%</h3>">-->
+            <!--<input type="text" data-item-name="fruitShape" data-item-template="<p><em>Shape:</em> <strong>%%</strong></p>">-->
+            <!--<input type="text" data-item-name="fruitColor" data-item-template="<p><em>Color:</em> <strong>%%</strong></p>">-->
+            <!--<button class="ui-btn ui-corner-all" data-add-button="true">Add</button>-->
+            <!--<button class="ui-btn ui-corner-all" data-clear-button="true">Clear</button>-->
+        <!--</form>-->
 
-			<button type="button" class="btn btn-success btn-block addel-add"><i class="fa fa-plus"></i></button>
+    </div>
 
-		</div>
+    <script>
+	    var $list = $( "#list" ).listview({
+          editable: true,
+          title: "Fruits",
+          emptyTitle: "No Fruits"
+        });
 
-	</div>
-</div>
-</div>
-
-<script src="js/jquery-1.12.3.min.js"></script>
-<script src="js/addel.jquery.js"></script>
-<script>
-$(document).ready(function () {
-  $('.addel').addel({
-    classes: {
-      target: 'target'
-    },
-    animation: {
-      duration: 300
-    }
-  }).on('addel:delete', function (event) {
-    if (!window.confirm('Are you absolutely positive you would like to delete: ' + '"' + event.target.find(':input').val() + '"?')) {
-      event.preventDefault()
-    }
-  })
-})
-</script>
+        $("#list3").on('listviewchange', function(e, data) {
+          console.log('listviewchange fired', data)
+        })
+	</script>
 
 </body>
 </html>
