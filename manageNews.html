@@ -8,23 +8,31 @@
 <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="css/normalize.css" />
-    <link rel="shortcut icon" href="favicon.ico"/>
 <style>
 		body {
-            background-color: #fafafa;
-            font-family: 'Microsoft yahei';
-        }
-
-        .container {
-            margin-top: 150px;
-        }
-
-        h1 {
-            padding-bottom: 30px;
-        }
+			background-color: #fafafa;
+			font-family: 'Microsoft yahei';
+		}
+		.container {
+			margin-top: 100px;
+		}
+		h1 {
+			padding-bottom: 30px;
+		}
+		.manageTitle{
+			display: flex;
+			justify-content: center;
+		}
+		.footer{
+			display: flex;
+			justify-content: center;
+		}
 </style>
 </head>
 <body>
+ <div class="page-header manageTitle">
+       <h1>不洗碗工作室日常新闻管理</h1>
+    </div>
 <div class="container">
 <div class="row">
 	<div class="col-sm-6 col-sm-offset-3">
@@ -73,8 +81,27 @@
 				</div>
 			</div>
 
-
 			<button type="button" class="btn btn-success btn-block addel-add"><i class="fa fa-plus"></i></button>
+
+			<nav aria-label="Page navigation" class="footer">
+			  <ul class="pagination">
+				<li>
+				  <a href="#" aria-label="Previous">
+					<span aria-hidden="true">&laquo;</span>
+				  </a>
+				</li>
+				<li><a href="#">1</a></li>
+				<li><a href="#">2</a></li>
+				<li><a href="#">3</a></li>
+				<li><a href="#">4</a></li>
+				<li><a href="#">5</a></li>
+				<li>
+				  <a href="#" aria-label="Next">
+					<span aria-hidden="true">&raquo;</span>
+				  </a>
+				</li>
+			  </ul>
+			</nav>
 
 		</div>
 
@@ -103,3 +130,4 @@ $(document).ready(function () {
 
 </body>
 </html>
+
