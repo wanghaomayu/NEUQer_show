@@ -20,61 +20,14 @@
       <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="headingOne">
           <h4 class="panel-title">
-            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-              标题一
+            <a  class="send" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+              文章一
             </a>
           </h4>
         </div>
         <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
           <div class="panel-body">
            东北大学秦皇岛分校是东北大学的组成部分，是经教育部正式批准成立的全日制普通高等学校，培养包括本科生、硕士研究生、博士研究生等在内的各类高级专门人才。学校自1987年建校以来，通过实施开放发展战略、人才强校战略和教育创新战略，承担“211工程”、“985工程”、国家社科基金重大项目等重点建设项目,构建多元化的人才培养机制，建立科学的管理体制机制，推动学校内涵式发展，提升学校的整体水平，学校的综合实力和社会影响力明显提高。现已成为一所开放式、多学科协调发展的特色鲜明的大学。
-          </div>
-        </div>
-      </div>
-
-      <div class="panel panel-default">
-        <div class="panel-heading" role="tab" id="headingTwo">
-          <h4 class="panel-title">
-            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-              标题二
-            </a>
-          </h4>
-        </div>
-        <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-          <div class="panel-body">
-
-            内容二
-
-          </div>
-        </div>
-      </div>
-
-      <div class="panel panel-default">
-        <div class="panel-heading" role="tab" id="headingThree">
-          <h4 class="panel-title">
-            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-              标题三
-            </a>
-          </h4>
-        </div>
-        <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
-          <div class="panel-body">
-              内容三
-          </div>
-        </div>
-      </div>
-
-       <div class="panel panel-default">
-        <div class="panel-heading" role="tab" id="headingThree">
-          <h4 class="panel-title">
-            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-              标题四
-            </a>
-          </h4>
-        </div>
-        <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
-          <div class="panel-body">
-              内容四
           </div>
         </div>
       </div>
@@ -102,5 +55,13 @@
       <input class="goBack btn btn-default" type="button" value="返回主页"
              onclick="window.location.href='index.html'">
     </div>
+
+    <script>
+       $(function(){
+         fetch("http://192.168.1.189:3005/posts?page=1&size=1")
+           .then(function(response){return response})
+           .then()
+       });
+    </script>
 </body>
 </html>
