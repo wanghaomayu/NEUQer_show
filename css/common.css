@@ -1,0 +1,25 @@
+/*sliderNews*/
+.app{
+    width: 80%;
+    margin: 150px auto;
+}
+
+.title{
+    display: flex;
+    justify-content: center;
+}
+
+.goBack{
+    float: right;
+    margin-top:5px;
+}
+
+.footer{
+    display: flex;
+    justify-content: center;
+}
+
+/*team*/
+.teamImg{
+
+}
