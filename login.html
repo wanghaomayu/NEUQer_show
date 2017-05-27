@@ -222,7 +222,7 @@
         }else {
           $.ajax({
             type: "POST",
-            url: "http://192.168.1.189:3005/posts",
+            url: "http://hrsoft.net/user/login",
             data: "username=" + escape($('#txtUser').val()) + "&password=" + escape($('#txtPassword').val()),//发送ajax请求
             dataType: "json",
             success: function(msg) {
@@ -230,12 +230,12 @@
                 alert("对不起，用户名或密码错误!");
               }
               if (msg == "success") {
-                parent.document.location.href = "login.html";
+                window.document.location.href = "manage.html";
               }
             },
           });
         }
-        return false; //stop client continue submit
+        return false; /*stop client continue submit*/
       }
     );
   });
