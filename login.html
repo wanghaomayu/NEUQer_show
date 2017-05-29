@@ -214,25 +214,24 @@
   });*/
   $(document).ready(function() {
     $("#login").click(function() {
-        var username = $("#txtUser").val();
+        var loginName = $("#txtUser").val();
         var password = $("#txtPassword").val();
-        if (username == "" || password == "") {
+        if (loginName == "" || password == "") {
           alert("用户名和密码不可以为空!");
           return false;
         }else {
           $.ajax({
             type: "POST",
             url: "http://hrsoft.net/user/login",
-            data: "username=" + escape($('#txtUser').val()) + "&password=" + escape($('#txtPassword').val()),//发送ajax请求
+            data: "loginName=" + escape($('#txtUser').val()) + "&password=" + escape($('#txtPassword').val()),//发送ajax请求
             dataType: "json",
-            success: function(msg) {
-              if (msg == "fail") {
+            success : function(result){
+              if(result.code == 0){
+                window.location.href="manage.html";
+              }else{
                 alert("对不起，用户名或密码错误!");
               }
-              if (msg == "success") {
-                window.document.location.href = "manage.html";
-              }
-            },
+            }
           });
         }
         return false; /*stop client continue submit*/
