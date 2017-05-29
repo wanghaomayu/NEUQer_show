@@ -113,7 +113,24 @@ $(document).ready(function () {
       event.preventDefault()
     }
   })
-})
+
+
+  //创建新文章
+  $(".addel-add").click(function() {
+      $.ajax({
+        type: "POST",
+        url: "http://hrsoft.net/posts",
+        data: "loginName=" + escape($('#txtUser').val()) + "&password=" + escape($('#txtPassword').val()),//发送ajax请求
+        dataType: "json",
+        success : function(result){
+          if(result.code == 0){
+            window.location.href="markdown.html";
+          }
+        }
+      });
+  }
+  );
+});
 </script>
 
 </body>
