@@ -223,11 +223,13 @@
           $.ajax({
             type: "POST",
             url: "http://hrsoft.net/user/login",
-            data: "loginName=" + escape($('#txtUser').val()) + "&password=" + escape($('#txtPassword').val()),//发送ajax请求
+            data: "loginName=" + escape($('#txtUser').val()) + "&password=" + escape($('#txtPassword').val())
+            +"&token"+escape($('#token').val()),
             dataType: "json",
             success : function(result){
               if(result.code == 0){
                 window.location.href="manage.html";
+                window.localStorage.setItem('token', result.data.token);
               }else{
                 alert("对不起，用户名或密码错误!");
               }
