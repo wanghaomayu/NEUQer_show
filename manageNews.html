@@ -121,7 +121,6 @@ $(document).ready(function () {
       $.ajax({
         type: "POST",
         url: "http://hrsoft.net/posts",
-        data: {title:123,content:456},
         beforeSend: function(request) {
 		  request.setRequestHeader("token", token);
 		},
