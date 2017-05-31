@@ -17,6 +17,9 @@
 .footer{
     display: flex;
     justify-content: center;
+    /*position: fixed;*/
+
+    /*bottom: 20px;*/
 }
 
 /*team*/

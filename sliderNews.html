@@ -16,21 +16,17 @@
     <div class="page-header title">
        <h1>不洗碗工作室日常新闻</h1>
     </div>
-    <div class="panel-group app" id="accordion" role="tablist" aria-multiselectable="true">
-      <div class="panel panel-default">
-        <div class="panel-heading" role="tab" id="headingOne">
-          <h4 class="panel-title">
-            <a  class="send" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-              文章一
-            </a>
-          </h4>
-        </div>
-        <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
-          <div class="panel-body">
-           东北大学秦皇岛分校是东北大学的组成部分，是经教育部正式批准成立的全日制普通高等学校，培养包括本科生、硕士研究生、博士研究生等在内的各类高级专门人才。学校自1987年建校以来，通过实施开放发展战略、人才强校战略和教育创新战略，承担“211工程”、“985工程”、国家社科基金重大项目等重点建设项目,构建多元化的人才培养机制，建立科学的管理体制机制，推动学校内涵式发展，提升学校的整体水平，学校的综合实力和社会影响力明显提高。现已成为一所开放式、多学科协调发展的特色鲜明的大学。
-          </div>
-        </div>
-      </div>
+
+
+    <div class="list-group app">
+          <a href="#" class="list-group-item active">
+            Cras justo odio
+          </a>
+          <a href="#" class="list-group-item">Dapibus ac facilisis in</a>
+          <a href="#" class="list-group-item">Morbi leo risus</a>
+          <a href="#" class="list-group-item">Porta ac consectetur ac</a>
+          <a href="#" class="list-group-item">Vestibulum at eros</a>
+
 
       <nav aria-label="Page navigation" class="footer">
 			  <ul class="pagination">
@@ -39,11 +35,11 @@
 					<span aria-hidden="true">&laquo;</span>
 				  </a>
 				</li>
-				<li><a href="#">1</a></li>
-				<li><a href="#">2</a></li>
-				<li><a href="#">3</a></li>
-				<li><a href="#">4</a></li>
-				<li><a href="#">5</a></li>
+				<li><a class="pageN" href="#">1</a></li>
+				<li><a class="pageN" href="#">2</a></li>
+				<li><a class="pageN" href="#">3</a></li>
+				<li><a class="pageN" href="#">4</a></li>
+				<li><a class="pageN" href="#">5</a></li>
 				<li>
 				  <a href="#" aria-label="Next">
 					<span aria-hidden="true">&raquo;</span>
@@ -52,15 +48,56 @@
 			  </ul>
 			</nav>
 
-      <input class="goBack btn btn-default" type="button" value="返回主页"
-             onclick="window.location.href='index.html'">
+      <!--<input class="goBack btn btn-default" type="button" value="返回主页"-->
+             <!--onclick="window.location.href='index.html'">-->
     </div>
 
     <script>
        $(function(){
-         fetch("http://192.168.1.189:3005/posts?page=1&size=1")
-           .then(function(response){return response})
-           .then()
+         var strContent = encodeURI($(".list-group-item").val())
+         var strNumber = encodeURI($(".list-group-item").size)
+         var page = window.localStorage.getItem('page') || 1
+         var pageA = $(".pageN")
+//         console.log(pageA)
+         for(var i=0;i<pageA.length;i++){
+           (function (i) {
+             pageA.eq(i).click(function(){
+//              console.log(i)
+              window.localStorage.setItem("page",$(this).val())
+              $(this).addClass("active")
+            })
+           })(i)
+         }
+
+         $.ajax({
+           type:"GET",
+           url:"http://hrsoft.net/posts?page="+page+"&size=6",
+           dataType: "json",
+           data:{ posts: strContent , count: strNumber},
+           success: function(json){
+             var strTitle = '';
+             var strID = '';
+             var aTitle = $('.list-group-item');
+//             function retHTML(){
+//               var str = '<a href="#" class="list-group-item">Dapibus ac facilisis in</a>';
+//               return str;
+//             }
+               console.log(strTitle);
+             for(var i=0;i < json.data.posts.length;i++){
+               (function (i) {
+                 console.log(json.data.posts[i]);
+                 strTitle = json.data.posts[i].title;
+                 strID = json.data.posts[i].id;
+
+//                 $('.app').append(retHTML);
+                 aTitle.eq(i).attr("id",strID).text(strTitle);
+//                 $('.list-group-item').attr("href", '#' + strID);
+                 strTitle = ''
+                 strID = ''
+               })(i)
+             }
+           }
+         })
        });
     </script>
 </body>
