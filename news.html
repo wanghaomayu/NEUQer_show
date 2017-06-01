@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>新闻详情</title>
+    <script src="https://cdn.bootcss.com/marked/0.3.6/marked.js"></script>
+    <script src="js/jquery-1.12.3.min.js"></script>
+    <script>
+      $(function(){
+          $.get("README.md", function(response, status, xhr){
+            $("#content").html(marked(response));
+          });
+      })
+    </script>
+</head>
+<body>
+      <div id="content"></div>
+</body>
+</html>
