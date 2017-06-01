@@ -56,40 +56,22 @@
        $(function(){
          var strContent = encodeURI($(".list-group-item").val())
          var strNumber = encodeURI($(".list-group-item").size)
-         var page = window.localStorage.getItem('page') || 1
          var pageA = $(".pageN")
-//         console.log(pageA)
-         for(var i=0;i<pageA.length;i++){
-           (function (i) {
-             pageA.eq(i).click(function(){
-//              console.log(i)
-              window.localStorage.setItem("page",$(this).val())
-              $(this).addClass("active")
-            })
-           })(i)
-         }
 
          $.ajax({
            type:"GET",
-           url:"http://hrsoft.net/posts?page="+page+"&size=6",
+           url:"http://hrsoft.net/posts?page=1"+"&size=6",
            dataType: "json",
            data:{ posts: strContent , count: strNumber},
            success: function(json){
              var strTitle = '';
              var strID = '';
              var aTitle = $('.list-group-item');
-//             function retHTML(){
-//               var str = '<a href="#" class="list-group-item">Dapibus ac facilisis in</a>';
-//               return str;
-//             }
-               console.log(strTitle);
              for(var i=0;i < json.data.posts.length;i++){
                (function (i) {
                  console.log(json.data.posts[i]);
                  strTitle = json.data.posts[i].title;
                  strID = json.data.posts[i].id;
-
-//                 $('.app').append(retHTML);
                  aTitle.eq(i).attr("id",strID).text(strTitle);
 //                 $('.list-group-item').attr("href", '#' + strID);
                  strTitle = ''
@@ -98,6 +80,50 @@
              }
            }
          })
+
+         for(var i=0;i<pageA.length;i++){
+           (function (i) {
+             pageA.eq(i).click(function(){
+              window.localStorage.setItem("page", pageA.eq(i).html())
+//              $(this).addClass("active")
+
+               var page = window.localStorage.getItem('page')
+
+               $.ajax({
+                 type:"GET",
+                 url:"http://hrsoft.net/posts?page="+page+"&size=6",
+                 dataType: "json",
+                 data:{ posts: strContent , count: strNumber},
+                 success: function(json){
+                   var strTitle = '';
+                   var strID = '';
+                   var aTitle = $('.list-group-item');
+
+//             function retHTML(){
+//               var str = '<a href="#" class="list-group-item">Dapibus ac facilisis in</a>';
+//               return str;
+//             }
+
+                   for(var i=0;i < json.data.posts.length;i++){
+                     (function (i) {
+                       console.log(json.data.posts[i]);
+                       strTitle = json.data.posts[i].title;
+                       strID = json.data.posts[i].id;
+
+//                 $('.app').append(retHTML);
+
+                       aTitle.eq(i).attr("id",strID).text(strTitle);
+//                 $('.list-group-item').attr("href", '#' + strID);
+
+                       strTitle = ''
+                       strID = ''
+                     })(i)
+                   }
+                 }
+               })
+             })
+           })(i)
+         }
        });
     </script>
 </body>
