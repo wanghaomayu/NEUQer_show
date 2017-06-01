@@ -110,7 +110,7 @@ $(document).ready(function () {
     }
   }).on('addel:delete', function (event) {
     if (!window.confirm('Are you absolutely positive you would like to delete: ' + '"' + event.target.find(':input').val() + '"?')) {
-      event.preventDefault()
+      event.preventDefault();
     }
   })
 
@@ -118,20 +118,44 @@ $(document).ready(function () {
   //创建新文章
   $(".addel-add").click(function() {
     let token = window.localStorage.getItem('token');
+      /*$.post("http://hrsoft.net/posts","JSON", function(data,status){
+        if(status.code == 0){
+        data.setRequestHeader("token", token);
+          /!*window.location.href="markdown.html";*!/
+        }
+      });*/
       $.ajax({
-        type: "POST",
-        url: "http://hrsoft.net/posts",
-        beforeSend: function(request) {
-		  request.setRequestHeader("token", token);
+        type:"post",
+        url:"http://hrsoft.net/posts",
+        beforeSend: function(request){
+		  request.setRequestHeader("token",token);
 		},
-        dataType: "JSONP",
-        success : function(result){
+        dataType:"JSON",
+        success: function(result){
           if(result.code == 0){
             window.location.href="markdown.html";
           }
         }
       });
   }
+  );
+  //修改文章內容
+  $(".glyphicon-pencil").click(function() {
+      let token = window.localStorage.getItem('token');
+      $.ajax({
+        type: "POST",
+        url: "http://hrsoft.net/posts/1",
+        beforeSend: function(request) {
+          request.setRequestHeader("token", token);
+        },
+        dataType: "JSON",
+        success: function(result){
+          if(result.code == 0){
+            window.location.href="markdown.html";
+          }
+        }
+      });
+    }
   );
 });
 </script>
