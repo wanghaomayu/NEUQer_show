@@ -205,12 +205,11 @@
             var strloginName = $('#inputEmail3').val();
             var strPassword = $('#inputPassword3').val();
             var body = { loginName: strloginName , password: strPassword };
-            console.log(body);
             $.ajax({
               type: "POST",
               url:"http://hrsoft.net/user/login",
               dataType: "json",
-              data:body,
+              data: body,
               success: function(json){
                  if(strloginName ==='' || strPassword === '') {
                    alert("用户名或者密码不能为空！");
@@ -219,6 +218,12 @@
                    console.log("登陆成功！");
                    window.localStorage.setItem('page',1);
                    window.localStorage.setItem('token', result.data.token);
+                   alert("用户名或者密码不能为空！")
+                 }else{
+                   if(json.code === 0){
+                   window.location.href='manage.html'
+                   console.log("登陆成功！")
+                   window.localStorage.setItem('page',1)
                  }else if(json.code === 1001){
                    alert("用户名不存在！");
                  }else if(json.code === 1002){
