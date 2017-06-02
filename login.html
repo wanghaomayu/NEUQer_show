@@ -217,8 +217,10 @@
                    if(json.code === 0){
                    window.location.href='manage.html';
                    console.log("登陆成功！");
-                   window.localStorage.setItem('page',1);
-                   window.localStorage.setItem('token', result.data.token);
+                   localStorage.setItem('page',1);
+                   console.log('login file line 221')
+                   localStorage.setItem('token', json.data.token);
+                   console.log(localStorage.getItem('token'))
                  }else if(json.code === 1001){
                    alert("用户名不存在！");
                  }else if(json.code === 1002){
