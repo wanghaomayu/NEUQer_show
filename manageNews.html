@@ -122,30 +122,42 @@
     //创建新文章
     $('.addel-add').click(function () {
         var token = window.localStorage.getItem('token')
-      console.log(token)
-        /*$.post("http://hrsoft.net/posts","JSON", function(data,status){
+        console.log(token)
+        function fetchDemo() {
+          fetch("http://hrsoft.net/posts",{method:'POST',headers:new Headers({'Content-type':'json'}),
+            mode : 'cors'
+          }).then(function(response) {
+            return response.json();
+          }).then(function(json) {
+            console.log(json);
+          });
+        }
+        fetchDemo();
+        /*var token = window.localStorage.getItem('token')
+        console.log(token)
+        $.post("http://hrsoft.net/posts","JSON", function(data,status){
                  if(status.code == 0){
                  data.setRequestHeader("token", token);
                  /!*window.location.href="markdown.html";*!/
                  }
-                 });*/
-
+                 });
         $.ajax({
-          type: 'post',
+          type: 'get',
           url: 'http://hrsoft.net/posts',
           headers:{
             'token':token
           },
-         /* beforeSend: function (request) {
+          beforeSend: function (request) {
             request.setRequestHeader('token', token)
-          },*/
+          },
           dataType: 'JSON',
           success: function (result) {
             if (result.code == 0) {
               window.location.href = 'markdown.html'
+              console.log("success");
             }
           }
-        })
+        })*/
       }
     )
     //修改文章內容
