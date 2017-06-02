@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <link rel="shortcut icon" href="favicon.ico"/>
+    <script src="js/jquery-1.12.3.min.js"></script>
     <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
     <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
@@ -194,6 +195,27 @@
     articleInput.addEventListener('keyup', () => {
       throttle(addArticle);
   })
+    /*$('.submit').click(function () {
+      var token = window.localStorage.getItem('token')
+      console.log(token)
+      $.ajax({
+        type: 'get',
+        url: 'http://hrsoft.net/posts',
+        headers:{
+          'token':token
+        },
+        beforeSend: function (request) {
+          request.setRequestHeader('token', token)
+        },
+        dataType: 'JSON',
+        success: function (result) {
+          if (result.code == 0) {
+            /!*window.location.href = 'markdown.html'*!/
+            console.log("success");
+          }
+        }
+      })
+    })*/
   }
 </script>
 </body>
