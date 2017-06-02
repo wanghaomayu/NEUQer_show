@@ -2,18 +2,24 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>新闻详情</title>
+    <title>文章内容</title>
+    <link rel="shortcut icon" href="favicon.ico"/>
     <script src="https://cdn.bootcss.com/marked/0.3.6/marked.js"></script>
+    <!--<script src="js/marked.js"></script>-->
     <script src="js/jquery-1.12.3.min.js"></script>
-    <script>
-      $(function(){
-          $.get("README.md", function(response, status, xhr){
-            $("#content").html(marked(response));
-          });
-      })
-    </script>
 </head>
 <body>
       <div id="content"></div>
 </body>
+<script>
+      $(function(){
+        var md = window.localStorage.getItem('strContent')
+        console.log(md)
+//        $.get(md, function(response, status, xhr){
+//          console.log(response)
+          $("#content").empty().html(marked(md));
+//          });
+      })
+//document.getElementById('content').innerHTML = marked('# Marked in browser\n\nRendered by **marked**.');
+</script>
 </html>
