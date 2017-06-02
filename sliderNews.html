@@ -19,14 +19,14 @@
 
 
     <div class="list-group app">
-          <a href="#" class="list-group-item active">
+          <a href="#" class="list-group-item ">
             Cras justo odio
           </a>
           <a href="#" class="list-group-item">Dapibus ac facilisis in</a>
           <a href="#" class="list-group-item">Morbi leo risus</a>
           <a href="#" class="list-group-item">Porta ac consectetur ac</a>
           <a href="#" class="list-group-item">Vestibulum at eros</a>
-
+          <a href="#" class="list-group-item">Vestibulum at eros</a>
 
       <nav aria-label="Page navigation" class="footer">
 			  <ul class="pagination">
@@ -54,7 +54,7 @@
 
     <script>
        $(function(){
-         var strContent = encodeURI($(".list-group-item").val())
+         var strContent = encodeURI($(".list-group-item").html())
          var strNumber = encodeURI($(".list-group-item").size)
          var pageA = $(".pageN")
 
@@ -67,15 +67,33 @@
              var strTitle = '';
              var strID = '';
              var aTitle = $('.list-group-item');
+
              for(var i=0;i < json.data.posts.length;i++){
                (function (i) {
-                 console.log(json.data.posts[i]);
                  strTitle = json.data.posts[i].title;
                  strID = json.data.posts[i].id;
-                 aTitle.eq(i).attr("id",strID).text(strTitle);
-//                 $('.list-group-item').attr("href", '#' + strID);
-                 strTitle = ''
-                 strID = ''
+                 aTitle.eq(i).attr("id",strID).text(strTitle);   //获取文章列表的核心
+
+                 //在进入某一页之后的查看文章内容
+                 aTitle.eq(i).click(function(){
+                   var post_ID = aTitle.eq(i).attr('id')
+                   $.ajax({
+                     type:"GET",
+                     url:"http://hrsoft.net/posts/"+post_ID,
+                     dataType: "json",
+                     data:'{}',
+                     success: function(json){
+                       if(json.code === 0){
+                           window.localStorage.setItem('strContent',json.data.content);
+//                           window.location.href= 'news.html'
+                         console.log(json.data.content);
+                       }else if(json.code === 3001){
+                         alert("文章不存在！")
+                       }
+                     }
+                   })
+                 })
+
                })(i)
              }
            }
@@ -83,12 +101,13 @@
 
          for(var i=0;i<pageA.length;i++){
            (function (i) {
+//             点击每个分页请求的数据不同
              pageA.eq(i).click(function(){
               window.localStorage.setItem("page", pageA.eq(i).html())
-//              $(this).addClass("active")
 
                var page = window.localStorage.getItem('page')
 
+               //手动点击选择页码
                $.ajax({
                  type:"GET",
                  url:"http://hrsoft.net/posts?page="+page+"&size=6",
@@ -106,16 +125,33 @@
 
                    for(var i=0;i < json.data.posts.length;i++){
                      (function (i) {
-                       console.log(json.data.posts[i]);
+//                       console.log(json.data.posts[i]);
                        strTitle = json.data.posts[i].title;
                        strID = json.data.posts[i].id;
 
 //                 $('.app').append(retHTML);
 
+                       //获取文章列表的核心
                        aTitle.eq(i).attr("id",strID).text(strTitle);
-//                 $('.list-group-item').attr("href", '#' + strID);
-                       strTitle = ''
-                       strID = ''
+
+                       aTitle.eq(i).click(function(){
+                         var post_ID = aTitle.eq(i).attr('id')
+                         $.ajax({
+                           type:"GET",
+                           url:"http://hrsoft.net/posts/"+post_ID,
+                           dataType: "json",
+                           data:'{}',
+                           success: function(json){
+                               if(json.code === 0){
+                                 window.localStorage.setItem('strContent',json.data.content);
+                                 window.location.href= 'news.html'
+                                 console.log(json.data.content);
+                               }else if(json.code === 3001){
+                                 alert("文章不存在！")
+                               }
+                           }
+                         })
+                       })
                      })(i)
                    }
                  }
