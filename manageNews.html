@@ -62,7 +62,7 @@
 
                 <div class="form-group target">
                     <div class="input-group">
-                        <input type="text" name="contacts[]" class="form-control" value="文章二">
+                        <input type="text" name="contacts[]" class="form-control" id="abc" value="文章二">
                         <span class="input-group-btn">
 						<button type="button" class="btn btn-default" aria-label="Left Align">
 							  <i class="glyphicon glyphicon-pencil" aria-hidden="true"></i>
@@ -95,13 +95,10 @@
                         </li>
                     </ul>
                 </nav>
-
             </div>
-
         </div>
     </div>
 </div>
-
 <script src="js/jquery-1.12.3.min.js"></script>
 <script src="js/addel.jquery.js"></script>
 <script>
@@ -118,61 +115,57 @@
         event.preventDefault()
       }
     })
-
     //创建新文章
     $('.addel-add').click(function () {
-        var token = window.localStorage.getItem('token')
-        console.log(token)
-        function fetchDemo() {
-          fetch("http://hrsoft.net/posts",{method:'POST',headers:new Headers({'Content-type':'json'}),
-            mode : 'cors'
-          }).then(function(response) {
-            return response.json();
-          }).then(function(json) {
-            console.log(json);
-          });
-        }
-        fetchDemo();
-        /*var token = window.localStorage.getItem('token')
-        console.log(token)
-        $.post("http://hrsoft.net/posts","JSON", function(data,status){
-                 if(status.code == 0){
-                 data.setRequestHeader("token", token);
-                 /!*window.location.href="markdown.html";*!/
-                 }
-                 });
+        var token = window.localStorage.getItem('token');
+        console.log(token);
         $.ajax({
           type: 'get',
-          url: 'http://hrsoft.net/posts',
-          headers:{
+          url: 'http://hrsoft.net/posts/8197',
+         /* headers:{
             'token':token
           },
           beforeSend: function (request) {
-            request.setRequestHeader('token', token)
-          },
+            request.setRequestHeader('token', token);
+          },*/
           dataType: 'JSON',
           success: function (result) {
             if (result.code == 0) {
-              window.location.href = 'markdown.html'
+              /*window.location.href = 'markdown.html';*/
               console.log("success");
+              $("#abc").attr("value","456");
             }
           }
-        })*/
+        })
+        /*fetch方法
+         function fetchDemo() {
+         fetch("http://hrsoft.net/posts",{method:'POST',headers:new Headers({'Content-type':'json'}),
+         mode : 'cors'
+         }).then(function(response) {
+         return response.json();
+         }).then(function(json) {
+         console.log(json);
+         });
+         }
+         fetchDemo();*/
       }
     )
     //修改文章內容
     $('.glyphicon-pencil').click(function () {
-        let token = window.localStorage.getItem('token')
+        var page = window.localStorage.getItem('page');
+        var token = window.localStorage.getItem('token');
+        console.log(token);
         $.ajax({
-          type: 'POST',
-          url: 'http://hrsoft.net/posts/1',
+          type: "put",
+          url: 'http://hrsoft.net/posts/8197',
           beforeSend: function (request) {
             request.setRequestHeader('token', token)
           },
           dataType: 'JSON',
           success: function (result) {
             if (result.code == 0) {
-              window.location.href = 'markdown.html'
+              window.location.href = 'markdown.html';
+              console.log("success");
             }
           }
         })
@@ -180,7 +173,6 @@
     )
   })
 </script>
-
 </body>
 </html>
 

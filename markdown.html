@@ -195,27 +195,30 @@
     articleInput.addEventListener('keyup', () => {
       throttle(addArticle);
   })
-    /*$('.submit').click(function () {
+    //提交新建的数据
+    $('.submit').click(function () {
       var token = window.localStorage.getItem('token')
-      console.log(token)
+      var title=$("#titleInput").val();
+      var content=$("#articleInput").val();
       $.ajax({
-        type: 'get',
+        type: 'POST',
         url: 'http://hrsoft.net/posts',
         headers:{
           'token':token
         },
+        data:{title:title,content:content},
         beforeSend: function (request) {
           request.setRequestHeader('token', token)
         },
         dataType: 'JSON',
         success: function (result) {
           if (result.code == 0) {
-            /!*window.location.href = 'markdown.html'*!/
             console.log("success");
+            window.location.href = 'manageNews.html';
           }
         }
       })
-    })*/
+    })
   }
 </script>
 </body>
