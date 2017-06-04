@@ -4,12 +4,26 @@
     <meta charset="UTF-8">
     <title>文章内容</title>
     <link rel="shortcut icon" href="favicon.ico"/>
+    <link rel="stylesheet" href="css/default.css">
     <script src="https://cdn.bootcss.com/marked/0.3.6/marked.js"></script>
-    <!--<script src="js/marked.js"></script>-->
     <script src="js/jquery-1.12.3.min.js"></script>
+
+    <style>
+        .markdown-body {
+            box-sizing: border-box;
+            min-width: 200px;
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 45px;
+        }
+    </style>
+
 </head>
 <body>
-      <div id="content"></div>
+    <article class="markdown-body">
+        <h1>Unicorns</h1>
+        <p>All the things</p>
+    </article>
 </body>
 <script>
       $(function(){
@@ -17,9 +31,13 @@
         console.log(md)
 //        $.get(md, function(response, status, xhr){
 //          console.log(response)
-          $("#content").empty().html(marked(md));
+          $(".markdown-body").empty().html(marked(md));
 //          });
       })
-//document.getElementById('content').innerHTML = marked('# Marked in browser\n\nRendered by **marked**.');
+//      $(function() {
+//        $(".markdown-body").html = marked('# Marked in browser\n\nRendered by **marked**.');
+//      })
 </script>
+
 </html>
+
