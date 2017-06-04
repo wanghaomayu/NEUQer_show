@@ -16,7 +16,7 @@
         }
 
         .container {
-            margin-top: 100px;
+            margin-top: 30px;
         }
 
         h1 {
@@ -74,6 +74,61 @@
                     </div>
                 </div>
 
+                <div class="form-group target">
+                    <div class="input-group">
+                        <input type="text" name="contacts[]" class="form-control" value="文章三">
+                        <span class="input-group-btn">
+						<button type="button" class="btn btn-default" aria-label="Left Align">
+							  <i class="glyphicon glyphicon-pencil" aria-hidden="true"></i>
+						</button>
+						<button type="button" class="btn btn-danger addel-delete">
+							<i class="fa fa-remove"></i>
+						</button>
+					</span>
+                    </div>
+                </div>
+
+                <div class="form-group target">
+                    <div class="input-group">
+                        <input type="text" name="contacts[]" class="form-control" value="文章四">
+                        <span class="input-group-btn">
+						<button type="button" class="btn btn-default" aria-label="Left Align">
+							  <i class="glyphicon glyphicon-pencil" aria-hidden="true"></i>
+						</button>
+						<button type="button" class="btn btn-danger addel-delete">
+							<i class="fa fa-remove"></i>
+						</button>
+					</span>
+                    </div>
+                </div>
+
+                <div class="form-group target">
+                    <div class="input-group">
+                        <input type="text" name="contacts[]" class="form-control" value="文章五">
+                        <span class="input-group-btn">
+						<button type="button" class="btn btn-default" aria-label="Left Align">
+							  <i class="glyphicon glyphicon-pencil" aria-hidden="true"></i>
+						</button>
+						<button type="button" class="btn btn-danger addel-delete">
+							<i class="fa fa-remove"></i>
+						</button>
+					</span>
+                    </div>
+                </div>
+
+                <div class="form-group target">
+                    <div class="input-group">
+                        <input type="text" name="contacts[]" class="form-control" value="文章六">
+                        <span class="input-group-btn">
+						<button type="button" class="btn btn-default" aria-label="Left Align">
+							  <i class="glyphicon glyphicon-pencil" aria-hidden="true"></i>
+						</button>
+						<button type="button" class="btn btn-danger addel-delete">
+							<i class="fa fa-remove"></i>
+						</button>
+					</span>
+                    </div>
+                </div>
                 <button type="button" class="btn btn-success btn-block addel-add"><i class="fa fa-plus"></i></button>
 
                 <nav aria-label="Page navigation" class="footer">
@@ -83,11 +138,11 @@
                                 <span aria-hidden="true">&laquo;</span>
                             </a>
                         </li>
-                        <li><a href="#">1</a></li>
-                        <li><a href="#">2</a></li>
-                        <li><a href="#">3</a></li>
-                        <li><a href="#">4</a></li>
-                        <li><a href="#">5</a></li>
+                        <li><a class="pageN" href="#">1</a></li>
+                        <li><a class="pageN" href="#">2</a></li>
+                        <li><a class="pageN" href="#">3</a></li>
+                        <li><a class="pageN" href="#">4</a></li>
+                        <li><a class="pageN" href="#">5</a></li>
                         <li>
                             <a href="#" aria-label="Next">
                                 <span aria-hidden="true">&raquo;</span>
@@ -115,49 +170,112 @@
         event.preventDefault()
       }
     })
+    //显示数据
+    var strContent = encodeURI($(".form-group").html());
+    var strNumber = encodeURI($(".form-group").size);
+    var pageA = $(".pageN");
+    $.ajax({
+      type:"GET",
+      url:"http://hrsoft.net/posts?page=1"+"&size=6",
+      dataType: "json",
+      data:{ posts: strContent , count: strNumber},
+      success: function(json){
+        var strTitle = '';
+        var strID = '';
+        var aTitle = $('.form-control');
+
+        for(var i=0;i < json.data.posts.length;i++){
+          (function (i) {
+            strTitle = json.data.posts[i].title;
+            strID = json.data.posts[i].id;
+            /*aTitle.eq(i).attr("id",strID).text(strTitle); */  //获取文章列表的核心
+            aTitle.eq(i).attr("value",strTitle).text(strTitle);
+          })(i)
+        }
+      }
+    })
+
+    for(var i=0;i<pageA.length;i++){
+      (function (i) {
+//             点击每个分页请求的数据不同
+        pageA.eq(i).click(function(){
+          window.localStorage.setItem("page", pageA.eq(i).html())
+
+          var page = window.localStorage.getItem('page')
+
+          //手动点击选择页码
+          $.ajax({
+            type:"GET",
+            url:"http://hrsoft.net/posts?page="+page+"&size=6",
+            dataType: "json",
+            data:{ posts: strContent , count: strNumber},
+            success: function(json){
+              var strTitle = '';
+              var strID = '';
+              var aTitle = $('.form-control');
+
+//             function retHTML(){
+//               var str = '<a href="#" class="list-group-item">Dapibus ac facilisis in</a>';
+//               return str;
+//             }
+
+              for(var i=0;i < json.data.posts.length;i++){
+                (function (i) {
+//                       console.log(json.data.posts[i]);
+                  strTitle = json.data.posts[i].title;
+                  strID = json.data.posts[i].id;
+                  aTitle.eq(i).attr("value",strTitle).text(strTitle);
+//                 $('.app').append(retHTML);
+                })(i)
+              }
+            }
+          })
+        })
+      })(i)
+    }
+
+
+
+
+
+
+
+
+
+
+
+
     //创建新文章
     $('.addel-add').click(function () {
         var token = window.localStorage.getItem('token');
         console.log(token);
-        $.ajax({
+        /*$.ajax({
           type: 'get',
-          url: 'http://hrsoft.net/posts/8197',
+          url: 'http://hrsoft.net/posts/8197',*/
          /* headers:{
             'token':token
           },
           beforeSend: function (request) {
             request.setRequestHeader('token', token);
           },*/
-          dataType: 'JSON',
+         /* dataType: 'JSON',
           success: function (result) {
-            if (result.code == 0) {
-              /*window.location.href = 'markdown.html';*/
-              console.log("success");
+            if (result.code == 0) {*/
+              window.location.href = 'markdown.html';
+          /*    console.log("success");
               $("#abc").attr("value","456");
             }
-          }
+          }*/
         })
-        /*fetch方法
-         function fetchDemo() {
-         fetch("http://hrsoft.net/posts",{method:'POST',headers:new Headers({'Content-type':'json'}),
-         mode : 'cors'
-         }).then(function(response) {
-         return response.json();
-         }).then(function(json) {
-         console.log(json);
-         });
-         }
-         fetchDemo();*/
-      }
-    )
     //修改文章內容
     $('.glyphicon-pencil').click(function () {
         var page = window.localStorage.getItem('page');
         var token = window.localStorage.getItem('token');
         console.log(token);
-        $.ajax({
-          type: "put",
-          url: 'http://hrsoft.net/posts/8197',
+      window.location.href = 'markdown.html';
+       /* $.ajax({
+          type: "post",
+          url: 'http://hrsoft.net/posts',
           beforeSend: function (request) {
             request.setRequestHeader('token', token)
           },
@@ -168,7 +286,7 @@
               console.log("success");
             }
           }
-        })
+        })*/
       }
     )
   })
