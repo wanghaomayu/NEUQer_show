@@ -264,10 +264,10 @@
         var page = window.localStorage.getItem('page');
         var token = window.localStorage.getItem('token');
         console.log(token);
-      window.location.href = 'markdown.html';
-       /* $.ajax({
-          type: "post",
-          url: 'http://hrsoft.net/posts',
+      /*window.location.href = 'markdown.html';*/
+        $.ajax({
+          type: "put",
+          url: 'http://hrsoft.net/posts/1',
           beforeSend: function (request) {
             request.setRequestHeader('token', token)
           },
@@ -278,7 +278,7 @@
               console.log("success");
             }
           }
-        })*/
+        })
       }
     )
 
