@@ -48,15 +48,19 @@
 
                 <div class="form-group target">
                     <div class="input-group">
+                        <!--文章标题-->
                         <input type="text" name="contacts[]" class="form-control" value="文章一">
+
                         <span class="input-group-btn">
-						<button type="button" class="btn btn-default" aria-label="Left Align">
-							  <i class="glyphicon glyphicon-pencil" aria-hidden="true"></i>
-						</button>
-						<button type="button" class="btn btn-danger addel-delete">
-							<i class="fa fa-remove"></i>
-						</button>
-					</span>
+                                <!--编辑修改文章-->
+                            <button type="button" class="btn btn-default" aria-label="Left Align">
+                                  <i class="glyphicon glyphicon-pencil" aria-hidden="true"></i>
+                            </button>
+                                <!--删除文章-->
+                            <button type="button" class="btn btn-danger addel-delete">
+                                <i class="fa fa-remove"></i>
+                            </button>
+                        </span>
                     </div>
                 </div>
 
@@ -129,8 +133,9 @@
 					</span>
                     </div>
                 </div>
+                <!--添加文章-->
                 <button type="button" class="btn btn-success btn-block addel-add"><i class="fa fa-plus"></i></button>
-
+                <!--/页脚-->
                 <nav aria-label="Page navigation" class="footer">
                     <ul class="pagination">
                         <li>
@@ -171,7 +176,7 @@
       }
     })
 
-    //显示数据
+    //打来页面自动刷新数据（就是自动获取没默认设置page=0页面的size=6个文章标题）
     var strContent = encodeURI($(".form-group").html());
     var strNumber = encodeURI($(".form-group").size);
     var pageA = $(".pageN");
@@ -184,18 +189,44 @@
         var strTitle = '';
         var strID = '';
         var aTitle = $('.form-control');
-
+        var addel_delete =  $('.addel-delete');
+//        window.localStorage.getItem("deleteTitle",aTitle);
         for(var i=0;i < json.data.posts.length;i++){
           (function (i) {
             strTitle = json.data.posts[i].title;
             strID = json.data.posts[i].id;
-            /*aTitle.eq(i).attr("id",strID).text(strTitle); */  //获取文章列表的核心
+            aTitle.eq(i).attr("id",strID);  //获取文章列表的核心+删除的是文章id，故加上
             aTitle.eq(i).attr("value",strTitle).text(strTitle);
+
+
+//                删除
+                addel_delete.eq(i).click(function () {
+                  var token = window.localStorage.getItem('token')
+                  var post_ID = aTitle.eq(i).attr('id')
+                  $.ajax({
+                    type:'GET',
+                    url:"http://hrsoft.net/posts/"+post_ID+"/delete",
+                    headers:{
+                      'token':token
+                    },
+                    beforeSend: function (request) {
+                      request.setRequestHeader('token', token)
+                    },
+                    dataType: 'JSON',
+                    success: function(){
+                      console.log("删除成功!")
+                      aTitle.eq(i).remove('value')
+                      window.location.reload()
+                    }
+                  })
+                  return false
+                })
           })(i)
         }
       }
     })
 
+//    点击每一页码之后本地获取的6篇文章信息，页数是使用者点击的页码数
     for(var i=0;i<pageA.length;i++){
       (function (i) {
 //             点击每个分页请求的数据不同
@@ -214,7 +245,7 @@
               var strTitle = '';
               var strID = '';
               var aTitle = $('.form-control');
-
+              var addel_delete =  $('.addel-delete');
 //             function retHTML(){
 //               var str = '<a href="#" class="list-group-item">Dapibus ac facilisis in</a>';
 //               return str;
@@ -227,6 +258,30 @@
                   strID = json.data.posts[i].id;
                   aTitle.eq(i).attr("value",strTitle).text(strTitle);
 //                 $('.app').append(retHTML);
+
+//                删除
+                  addel_delete.eq(i).click(function () {
+                    var token = window.localStorage.getItem('token')
+                    var post_ID = aTitle.eq(i).attr('id')
+                    $.ajax({
+                      type:'GET',
+                      url:"http://hrsoft.net/posts/"+post_ID+"/delete",
+                      headers:{
+                        'token':token
+                      },
+                      beforeSend: function (request) {
+                        request.setRequestHeader('token', token)
+                      },
+                      dataType: 'JSON',
+                      success: function(){
+                        console.log("删除成功!")
+                        aTitle.eq(i).remove('value')
+                        window.location.reload()
+                      }
+                    })
+                    return false
+                  })
+
                 })(i)
               }
             }
@@ -283,26 +338,27 @@
     )
 
     //删除文章
-    for(var j=0;j<6;j++){
-      (function(j){
-        var addel_delete =  $('.addel-delete');
-        addel_delete.eq(i).click(function () {
-          var token = window.localStorage.getItem('token')
-
-          $.ajax({
-            type:'DELETE',
-            url:"http://hrsoft.net/posts/"+post_ID,
-            beforeSend: function (request) {
-              request.setRequestHeader('token', token)
-            },
-            dataType: 'JSON',
-            success: function(){
-
-            }
-          })
-        })
-      })(j)
-    }
+//    for(var j=0;j<6;j++){
+//      (function(j){
+//        var addel_delete =  $('.addel-delete');
+//        addel_delete.eq(j).click(function () {
+//          var token = window.localStorage.getItem('token')
+//
+//          $.ajax({
+//            type:'DELETE',
+//            url:"http://hrsoft.net/posts/"+post_ID,
+//            beforeSend: function (request) {
+//              request.setRequestHeader('token', token)
+//            },
+//            dataType: 'JSON',
+//            success: function(){
+//
+//            }
+//          })
+//          return false;
+//        })
+//      })(j)
+//    }
   })
 </script>
 </body>
