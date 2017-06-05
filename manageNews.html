@@ -166,17 +166,18 @@
         duration: 300
       }
     }).on('addel:delete', function (event) {
-      if (!window.confirm('Are you absolutely positive you would like to delete: ' + '"' + event.target.find(':input').val() + '"?')) {
+      if (!window.confirm('删除: ' + '"' + event.target.find(':input').val() + '"?')) {
         event.preventDefault()
       }
     })
+
     //显示数据
     var strContent = encodeURI($(".form-group").html());
     var strNumber = encodeURI($(".form-group").size);
     var pageA = $(".pageN");
     $.ajax({
       type:"GET",
-      url:"http://hrsoft.net/posts?page=1"+"&size=6",
+      url:"http://hrsoft.net/posts?page=0"+"&size=6",
       dataType: "json",
       data:{ posts: strContent , count: strNumber},
       success: function(json){
@@ -199,7 +200,7 @@
       (function (i) {
 //             点击每个分页请求的数据不同
         pageA.eq(i).click(function(){
-          window.localStorage.setItem("page", pageA.eq(i).html())
+          window.localStorage.setItem("page", pageA.eq(i).html()-1)
 
           var page = window.localStorage.getItem('page')
 
@@ -233,15 +234,6 @@
         })
       })(i)
     }
-
-
-
-
-
-
-
-
-
 
 
 
@@ -289,6 +281,28 @@
         })*/
       }
     )
+
+    //删除文章
+    for(var j=0;j<6;j++){
+      (function(j){
+        var addel_delete =  $('.addel-delete');
+        addel_delete.eq(i).click(function () {
+          var token = window.localStorage.getItem('token')
+
+          $.ajax({
+            type:'DELETE',
+            url:"http://hrsoft.net/posts/"+post_ID,
+            beforeSend: function (request) {
+              request.setRequestHeader('token', token)
+            },
+            dataType: 'JSON',
+            success: function(){
+
+            }
+          })
+        })
+      })(j)
+    }
   })
 </script>
 </body>

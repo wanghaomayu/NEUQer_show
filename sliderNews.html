@@ -58,7 +58,7 @@
 
          $.ajax({
            type:"GET",
-           url:"http://hrsoft.net/posts?page=1"+"&size=6",
+           url:"http://hrsoft.net/posts?page=0"+"&size=6",
            dataType: "json",
            data:{ posts: strContent , count: strNumber},
            success: function(json){
@@ -83,8 +83,8 @@
                      success: function(json){
                        if(json.code === 0){
                            window.localStorage.setItem('strContent',json.data.content);
-//                           window.location.href= 'news.html'
-                         console.log(json.data.content);
+                           window.location.href= 'news.html'
+                           console.log(json.data.content);
                        }else if(json.code === 3001){
                          alert("文章不存在！")
                        }
@@ -101,7 +101,7 @@
            (function (i) {
 //             点击每个分页请求的数据不同
              pageA.eq(i).click(function(){
-              window.localStorage.setItem("page", pageA.eq(i).html())
+              window.localStorage.setItem("page", pageA.eq(i).html()-1)
 
                var page = window.localStorage.getItem('page')
 
