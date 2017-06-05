@@ -122,6 +122,7 @@
 </div>
 <div class="right-wrapper">
     <button type="button" class="btn btn-default submit">提交</button>
+    <button type="button" class="btn btn-default submit">提交</button>
     <div class="output">
         <h1 id="titleOutput"></h1>
         <div id="articleOutput"></div>
@@ -196,29 +197,60 @@
       throttle(addArticle);
   })
     //提交新建的数据
-    $('.submit').click(function () {
-      var token = window.localStorage.getItem('token')
-      var title=$("#titleInput").val();
-      var content=$("#articleInput").val();
-      $.ajax({
-        type: 'POST',
-        url: 'http://hrsoft.net/posts',
-        headers:{
-          'token':token
-        },
-        data:{title:title,content:content},
-        beforeSend: function (request) {
-          request.setRequestHeader('token', token)
-        },
-        dataType: 'JSON',
-        success: function (result) {
-          if (result.code == 0) {
-            console.log("success");
-            window.location.href = 'manageNews.html';
-          }
+      $('.submit').click(function () {
+        var str = window.location.href;
+        var num=str.indexOf("?");
+        str=str.substr(num+1); //取得所有参数   stringvar.substr(start [, length ]
+        if(!str){
+          var token = window.localStorage.getItem('token')
+          var title=$("#titleInput").val();
+          var content=$("#articleInput").val();
+          $.ajax({
+            type: 'POST',
+            url: 'http://hrsoft.net/posts',
+            headers:{
+              'token':token
+            },
+            data:{title:title,content:content},
+            beforeSend: function (request) {
+              request.setRequestHeader('token', token)
+            },
+            dataType: 'JSON',
+            success: function (result) {
+              if (result.code == 0) {
+                console.log("success");
+                  /*    window.location.href = 'manageNews.html';*/
+              }
+            }
+          })
+        }else{
+          var token = window.localStorage.getItem('token')
+          var title=$("#titleInput").val();
+          var content=$("#articleInput").val();
+          var list= window.localStorage.getItem('id');
+          console.log(list);
+          $.ajax({
+            type: 'POST',
+            url: 'http://hrsoft.net/posts/+list+/update',
+            headers:{
+              'token':token
+            },
+            data:{title:title,content:content},
+            beforeSend: function (request) {
+              request.setRequestHeader('token', token)
+            },
+            dataType: 'JSON',
+            success: function (result) {
+              if (result.code == 0) {
+                console.log("success");
+                console.log(localStorage.getItem('token'))
+                  /*window.location.href = 'manageNews.html';*/
+              }
+            }
+          })
         }
+
       })
-    })
   }
 </script>
 </body>

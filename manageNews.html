@@ -189,7 +189,7 @@
           (function (i) {
             strTitle = json.data.posts[i].title;
             strID = json.data.posts[i].id;
-            /*aTitle.eq(i).attr("id",strID).text(strTitle); */  //获取文章列表的核心
+            aTitle.eq(i).attr("id",strID).text(strTitle);   //获取文章列表的核心
             aTitle.eq(i).attr("value",strTitle).text(strTitle);
           })(i)
         }
@@ -241,46 +241,66 @@
     $('.addel-add').click(function () {
         var token = window.localStorage.getItem('token');
         console.log(token);
-        /*$.ajax({
-          type: 'get',
-          url: 'http://hrsoft.net/posts/8197',*/
-         /* headers:{
-            'token':token
-          },
-          beforeSend: function (request) {
-            request.setRequestHeader('token', token);
-          },*/
-         /* dataType: 'JSON',
-          success: function (result) {
-            if (result.code == 0) {*/
-              window.location.href = 'markdown.html';
-          /*    console.log("success");
-              $("#abc").attr("value","456");
-            }
-          }*/
+        window.location.href = 'markdown.html';
         })
+
     //修改文章內容
-    $('.glyphicon-pencil').click(function () {
-        var page = window.localStorage.getItem('page');
-        var token = window.localStorage.getItem('token');
-        console.log(token);
-      /*window.location.href = 'markdown.html';*/
-        $.ajax({
-          type: "put",
-          url: 'http://hrsoft.net/posts/1',
-          beforeSend: function (request) {
-            request.setRequestHeader('token', token)
-          },
-          dataType: 'JSON',
-          success: function (result) {
-            if (result.code == 0) {
-              window.location.href = 'markdown.html';
-              console.log("success");
-            }
-          }
-        })
+
+      var list =$('.form-group');
+      for(var i=0;i < list.length;i++){
+        (function (i) {
+          list.eq(i).click(function(){
+            /*var post_ID = aTitle.eq(i).attr('id')*/
+            console.log(i);
+            var name = $('input').eq(i).attr('id');
+            console.log(name);
+            localStorage.setItem('id', name);
+            /*window.location.href = 'markdown.html?edit';*/
+          })
+        })(i)
       }
-    )
+    for(var i=0;i<pageA.length;i++){
+      (function (i) {
+//             点击每个分页请求的数据不同
+        pageA.eq(i).click(function(){
+          window.localStorage.setItem("page", pageA.eq(i).html()-1)
+
+          var page = window.localStorage.getItem('page')
+
+          //手动点击选择页码
+          $.ajax({
+            type:"GET",
+            url:"http://hrsoft.net/posts?page="+page+"&size=6",
+            dataType: "json",
+            data:{ posts: strContent , count: strNumber},
+            success: function(json){
+              var strTitle = '';
+              var strID = '';
+              var aTitle = $('.form-control');
+//             function retHTML(){
+//               var str = '<a href="#" class="list-group-item">Dapibus ac facilisis in</a>';
+//               return str;
+//             }
+
+              for(var i=0;i < json.data.posts.length;i++){
+                (function (i) {
+//                       console.log(json.data.posts[i]);
+                  strTitle = json.data.posts[i].title;
+                  strID = json.data.posts[i].id;
+                  aTitle.eq(i).attr("value",strTitle).text(strTitle);
+//                 $('.app').append(retHTML);
+
+                })(i)
+              }
+            }
+          })
+        })
+      })(i)
+    }
+     /* var list=$('.id');
+      var name = $('input').eq(i).attr('id');
+      console.log(name);*/
+     /* window.location.href = 'markdown.html';*/
 
     //删除文章
     for(var j=0;j<6;j++){
@@ -290,8 +310,8 @@
           var token = window.localStorage.getItem('token')
 
           $.ajax({
-            type:'DELETE',
-            url:"http://hrsoft.net/posts/"+post_ID,
+            type:'get',
+            url:"http://hrsoft.net/posts/8216/delete",
             beforeSend: function (request) {
               request.setRequestHeader('token', token)
             },
