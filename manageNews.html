@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/common.css">
     <style>
         body {
             background-color: #fafafa;
@@ -35,128 +36,133 @@
     </style>
 </head>
 <body>
-<div class="page-header manageTitle">
-    <h1>不洗碗工作室日常新闻管理</h1>
-</div>
-<div class="container">
-    <div class="row">
-        <div class="col-sm-6 col-sm-offset-3">
+    <div class="page-header title">
+        <h1>不洗碗工作室日常新闻管理</h1>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6 col-sm-offset-3">
 
-            <div class="addel">
+                <div class="addel">
 
-                <h2>消息管理</h2>
+                    <h2>消息管理</h2>
 
-                <div class="form-group target">
-                    <div class="input-group">
-                        <input type="text" name="contacts[]" class="form-control" value="文章一">
-                        <span class="input-group-btn">
-						<button type="button" class="btn btn-default" aria-label="Left Align">
-							  <i class="glyphicon glyphicon-pencil" aria-hidden="true"></i>
-						</button>
-						<button type="button" class="btn btn-danger addel-delete">
-							<i class="fa fa-remove"></i>
-						</button>
-					</span>
+                    <div class="form-group target">
+                        <div class="input-group">
+                            <!--文章标题-->
+                            <input type="text" name="contacts[]" class="form-control" value="文章一">
+
+                            <span class="input-group-btn">
+                                    <!--编辑修改文章-->
+                                <button type="button" class="btn btn-default" aria-label="Left Align">
+                                      <i class="glyphicon glyphicon-pencil" aria-hidden="true"></i>
+                                </button>
+                                    <!--删除文章-->
+                                <button type="button" class="btn btn-danger addel-delete">
+                                    <i class="fa fa-remove"></i>
+                                </button>
+                            </span>
+                        </div>
                     </div>
-                </div>
 
-                <div class="form-group target">
-                    <div class="input-group">
-                        <input type="text" name="contacts[]" class="form-control" id="abc" value="文章二">
-                        <span class="input-group-btn">
-						<button type="button" class="btn btn-default" aria-label="Left Align">
-							  <i class="glyphicon glyphicon-pencil" aria-hidden="true"></i>
-						</button>
-						<button type="button" class="btn btn-danger addel-delete">
-							<i class="fa fa-remove"></i>
-						</button>
-					</span>
+                    <div class="form-group target">
+                        <div class="input-group">
+                            <input type="text" name="contacts[]" class="form-control" id="abc" value="文章二">
+                            <span class="input-group-btn">
+                            <button type="button" class="btn btn-default" aria-label="Left Align">
+                                  <i class="glyphicon glyphicon-pencil" aria-hidden="true"></i>
+                            </button>
+                            <button type="button" class="btn btn-danger addel-delete">
+                                <i class="fa fa-remove"></i>
+                            </button>
+                        </span>
+                        </div>
                     </div>
-                </div>
 
-                <div class="form-group target">
-                    <div class="input-group">
-                        <input type="text" name="contacts[]" class="form-control" value="文章三">
-                        <span class="input-group-btn">
-						<button type="button" class="btn btn-default" aria-label="Left Align">
-							  <i class="glyphicon glyphicon-pencil" aria-hidden="true"></i>
-						</button>
-						<button type="button" class="btn btn-danger addel-delete">
-							<i class="fa fa-remove"></i>
-						</button>
-					</span>
+                    <div class="form-group target">
+                        <div class="input-group">
+                            <input type="text" name="contacts[]" class="form-control" value="文章三">
+                            <span class="input-group-btn">
+                            <button type="button" class="btn btn-default" aria-label="Left Align">
+                                  <i class="glyphicon glyphicon-pencil" aria-hidden="true"></i>
+                            </button>
+                            <button type="button" class="btn btn-danger addel-delete">
+                                <i class="fa fa-remove"></i>
+                            </button>
+                        </span>
+                        </div>
                     </div>
-                </div>
 
-                <div class="form-group target">
-                    <div class="input-group">
-                        <input type="text" name="contacts[]" class="form-control" value="文章四">
-                        <span class="input-group-btn">
-						<button type="button" class="btn btn-default" aria-label="Left Align">
-							  <i class="glyphicon glyphicon-pencil" aria-hidden="true"></i>
-						</button>
-						<button type="button" class="btn btn-danger addel-delete">
-							<i class="fa fa-remove"></i>
-						</button>
-					</span>
+                    <div class="form-group target">
+                        <div class="input-group">
+                            <input type="text" name="contacts[]" class="form-control" value="文章四">
+                            <span class="input-group-btn">
+                            <button type="button" class="btn btn-default" aria-label="Left Align">
+                                  <i class="glyphicon glyphicon-pencil" aria-hidden="true"></i>
+                            </button>
+                            <button type="button" class="btn btn-danger addel-delete">
+                                <i class="fa fa-remove"></i>
+                            </button>
+                        </span>
+                        </div>
                     </div>
-                </div>
 
-                <div class="form-group target">
-                    <div class="input-group">
-                        <input type="text" name="contacts[]" class="form-control" value="文章五">
-                        <span class="input-group-btn">
-						<button type="button" class="btn btn-default" aria-label="Left Align">
-							  <i class="glyphicon glyphicon-pencil" aria-hidden="true"></i>
-						</button>
-						<button type="button" class="btn btn-danger addel-delete">
-							<i class="fa fa-remove"></i>
-						</button>
-					</span>
+                    <div class="form-group target">
+                        <div class="input-group">
+                            <input type="text" name="contacts[]" class="form-control" value="文章五">
+                            <span class="input-group-btn">
+                            <button type="button" class="btn btn-default" aria-label="Left Align">
+                                  <i class="glyphicon glyphicon-pencil" aria-hidden="true"></i>
+                            </button>
+                            <button type="button" class="btn btn-danger addel-delete">
+                                <i class="fa fa-remove"></i>
+                            </button>
+                        </span>
+                        </div>
                     </div>
-                </div>
 
-                <div class="form-group target">
-                    <div class="input-group">
-                        <input type="text" name="contacts[]" class="form-control" value="文章六">
-                        <span class="input-group-btn">
-						<button type="button" class="btn btn-default" aria-label="Left Align">
-							  <i class="glyphicon glyphicon-pencil" aria-hidden="true"></i>
-						</button>
-						<button type="button" class="btn btn-danger addel-delete">
-							<i class="fa fa-remove"></i>
-						</button>
-					</span>
+                    <div class="form-group target">
+                        <div class="input-group">
+                            <input type="text" name="contacts[]" class="form-control" value="文章六">
+                            <span class="input-group-btn">
+                            <button type="button" class="btn btn-default" aria-label="Left Align">
+                                  <i class="glyphicon glyphicon-pencil" aria-hidden="true"></i>
+                            </button>
+                            <button type="button" class="btn btn-danger addel-delete">
+                                <i class="fa fa-remove"></i>
+                            </button>
+                        </span>
+                        </div>
                     </div>
+                    <!--添加文章-->
+                    <button type="button" class="btn btn-success btn-block addel-add"><i class="fa fa-plus"></i></button>
+                    <!--/页脚-->
+                    <nav aria-label="Page navigation" class="footer">
+                        <ul class="pagination">
+                            <li>
+                                <a href="#" aria-label="Previous">
+                                    <span aria-hidden="true">&laquo;</span>
+                                </a>
+                            </li>
+                            <li><a class="pageN" href="#">1</a></li>
+                            <li><a class="pageN" href="#">2</a></li>
+                            <li><a class="pageN" href="#">3</a></li>
+                            <li><a class="pageN" href="#">4</a></li>
+                            <li><a class="pageN" href="#">5</a></li>
+                            <li>
+                                <a href="#" aria-label="Next">
+                                    <span aria-hidden="true">&raquo;</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
                 </div>
-                <button type="button" class="btn btn-success btn-block addel-add"><i class="fa fa-plus"></i></button>
-
-                <nav aria-label="Page navigation" class="footer">
-                    <ul class="pagination">
-                        <li>
-                            <a href="#" aria-label="Previous">
-                                <span aria-hidden="true">&laquo;</span>
-                            </a>
-                        </li>
-                        <li><a class="pageN" href="#">1</a></li>
-                        <li><a class="pageN" href="#">2</a></li>
-                        <li><a class="pageN" href="#">3</a></li>
-                        <li><a class="pageN" href="#">4</a></li>
-                        <li><a class="pageN" href="#">5</a></li>
-                        <li>
-                            <a href="#" aria-label="Next">
-                                <span aria-hidden="true">&raquo;</span>
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
             </div>
         </div>
     </div>
-</div>
-<script src="js/jquery-1.12.3.min.js"></script>
-<script src="js/addel.jquery.js"></script>
-<script>
+    <script src="js/jquery-1.12.3.min.js"></script>
+    <script src="js/addel.jquery.js"></script>
+    <script>
   $(document).ready(function () {
     $('.addel').addel({
       classes: {
@@ -171,7 +177,7 @@
       }
     })
 
-    //显示数据
+    //打来页面自动刷新数据（就是自动获取没默认设置page=0页面的size=6个文章标题）
     var strContent = encodeURI($(".form-group").html());
     var strNumber = encodeURI($(".form-group").size);
     var pageA = $(".pageN");
@@ -184,18 +190,44 @@
         var strTitle = '';
         var strID = '';
         var aTitle = $('.form-control');
-
+        var addel_delete =  $('.addel-delete');
+//        window.localStorage.getItem("deleteTitle",aTitle);
         for(var i=0;i < json.data.posts.length;i++){
           (function (i) {
             strTitle = json.data.posts[i].title;
             strID = json.data.posts[i].id;
-            aTitle.eq(i).attr("id",strID).text(strTitle);   //获取文章列表的核心
+            aTitle.eq(i).attr("id",strID);  //获取文章列表的核心+删除的是文章id，故加上
             aTitle.eq(i).attr("value",strTitle).text(strTitle);
+
+
+//                删除
+                addel_delete.eq(i).click(function () {
+                  var token = window.localStorage.getItem('token')
+                  var post_ID = aTitle.eq(i).attr('id')
+                  $.ajax({
+                    type:'GET',
+                    url:"http://hrsoft.net/posts/"+post_ID+"/delete",
+                    headers:{
+                      'token':token
+                    },
+                    beforeSend: function (request) {
+                      request.setRequestHeader('token', token)
+                    },
+                    dataType: 'JSON',
+                    success: function(){
+                      console.log("删除成功!")
+                      aTitle.eq(i).remove('value')
+                      window.location.reload()
+                    }
+                  })
+                  return false
+                })
           })(i)
         }
       }
     })
 
+//    点击每一页码之后本地获取的6篇文章信息，页数是使用者点击的页码数
     for(var i=0;i<pageA.length;i++){
       (function (i) {
 //             点击每个分页请求的数据不同
@@ -214,7 +246,7 @@
               var strTitle = '';
               var strID = '';
               var aTitle = $('.form-control');
-
+              var addel_delete =  $('.addel-delete');
 //             function retHTML(){
 //               var str = '<a href="#" class="list-group-item">Dapibus ac facilisis in</a>';
 //               return str;
@@ -227,6 +259,30 @@
                   strID = json.data.posts[i].id;
                   aTitle.eq(i).attr("value",strTitle).text(strTitle);
 //                 $('.app').append(retHTML);
+
+//                删除
+                  addel_delete.eq(i).click(function () {
+                    var token = window.localStorage.getItem('token')
+                    var post_ID = aTitle.eq(i).attr('id')
+                    $.ajax({
+                      type:'GET',
+                      url:"http://hrsoft.net/posts/"+post_ID+"/delete",
+                      headers:{
+                        'token':token
+                      },
+                      beforeSend: function (request) {
+                        request.setRequestHeader('token', token)
+                      },
+                      dataType: 'JSON',
+                      success: function(){
+                        console.log("删除成功!")
+                        aTitle.eq(i).remove('value')
+                        window.location.reload()
+                      }
+                    })
+                    return false
+                  })
+
                 })(i)
               }
             }
@@ -241,88 +297,47 @@
     $('.addel-add').click(function () {
         var token = window.localStorage.getItem('token');
         console.log(token);
-        window.location.href = 'markdown.html';
+        /*$.ajax({
+          type: 'get',
+          url: 'http://hrsoft.net/posts/8197',*/
+         /* headers:{
+            'token':token
+          },
+          beforeSend: function (request) {
+            request.setRequestHeader('token', token);
+          },*/
+         /* dataType: 'JSON',
+          success: function (result) {
+            if (result.code == 0) {*/
+              window.location.href = 'markdown.html';
+          /*    console.log("success");
+              $("#abc").attr("value","456");
+            }
+          }*/
         })
-
     //修改文章內容
-
-      var list =$('.form-group');
-      for(var i=0;i < list.length;i++){
-        (function (i) {
-          list.eq(i).click(function(){
-            /*var post_ID = aTitle.eq(i).attr('id')*/
-            console.log(i);
-            var name = $('input').eq(i).attr('id');
-            console.log(name);
-            localStorage.setItem('id', name);
-            /*window.location.href = 'markdown.html?edit';*/
-          })
-        })(i)
+    $('.glyphicon-pencil').click(function () {
+        var page = window.localStorage.getItem('page');
+        var token = window.localStorage.getItem('token');
+        console.log(token);
+      /*window.location.href = 'markdown.html';*/
+        $.ajax({
+          type: "put",
+          url: 'http://hrsoft.net/posts/1',
+          beforeSend: function (request) {
+            request.setRequestHeader('token', token)
+          },
+          dataType: 'JSON',
+          success: function (result) {
+            if (result.code == 0) {
+              window.location.href = 'markdown.html';
+              console.log("success");
+            }
+          }
+        })
       }
-    for(var i=0;i<pageA.length;i++){
-      (function (i) {
-//             点击每个分页请求的数据不同
-        pageA.eq(i).click(function(){
-          window.localStorage.setItem("page", pageA.eq(i).html()-1)
+    )
 
-          var page = window.localStorage.getItem('page')
-
-          //手动点击选择页码
-          $.ajax({
-            type:"GET",
-            url:"http://hrsoft.net/posts?page="+page+"&size=6",
-            dataType: "json",
-            data:{ posts: strContent , count: strNumber},
-            success: function(json){
-              var strTitle = '';
-              var strID = '';
-              var aTitle = $('.form-control');
-//             function retHTML(){
-//               var str = '<a href="#" class="list-group-item">Dapibus ac facilisis in</a>';
-//               return str;
-//             }
-
-              for(var i=0;i < json.data.posts.length;i++){
-                (function (i) {
-//                       console.log(json.data.posts[i]);
-                  strTitle = json.data.posts[i].title;
-                  strID = json.data.posts[i].id;
-                  aTitle.eq(i).attr("value",strTitle).text(strTitle);
-//                 $('.app').append(retHTML);
-
-                })(i)
-              }
-            }
-          })
-        })
-      })(i)
-    }
-     /* var list=$('.id');
-      var name = $('input').eq(i).attr('id');
-      console.log(name);*/
-     /* window.location.href = 'markdown.html';*/
-
-    //删除文章
-    for(var j=0;j<6;j++){
-      (function(j){
-        var addel_delete =  $('.addel-delete');
-        addel_delete.eq(i).click(function () {
-          var token = window.localStorage.getItem('token')
-
-          $.ajax({
-            type:'get',
-            url:"http://hrsoft.net/posts/8216/delete",
-            beforeSend: function (request) {
-              request.setRequestHeader('token', token)
-            },
-            dataType: 'JSON',
-            success: function(){
-
-            }
-          })
-        })
-      })(j)
-    }
   })
 </script>
 </body>
