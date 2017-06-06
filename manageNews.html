@@ -191,6 +191,7 @@
         var strID = '';
         var aTitle = $('.form-control');
         var addel_delete =  $('.addel-delete');
+        var glyphicon_pencil =  $('.glyphicon-pencil');
 //        window.localStorage.getItem("deleteTitle",aTitle);
         for(var i=0;i < json.data.posts.length;i++){
           (function (i) {
@@ -222,6 +223,13 @@
                   })
                   return false
                 })
+            //修改
+                glyphicon_pencil.eq(i).click(function () {
+                  var token = window.localStorage.getItem('token')
+                  var post_ID = aTitle.eq(i).attr('id')
+                  localStorage.setItem('list', post_ID);
+                  window.location.href = 'markdown.html?edit';
+            })
           })(i)
         }
       }
@@ -247,6 +255,7 @@
               var strID = '';
               var aTitle = $('.form-control');
               var addel_delete =  $('.addel-delete');
+              var glyphicon_pencil =  $('.glyphicon-pencil');
 //             function retHTML(){
 //               var str = '<a href="#" class="list-group-item">Dapibus ac facilisis in</a>';
 //               return str;
@@ -258,6 +267,7 @@
                   strTitle = json.data.posts[i].title;
                   strID = json.data.posts[i].id;
                   aTitle.eq(i).attr("value",strTitle).text(strTitle);
+                  aTitle.eq(i).attr("id",strID).text(strTitle);
 //                 $('.app').append(retHTML);
 
 //                删除
@@ -282,7 +292,13 @@
                     })
                     return false
                   })
-
+                  //修改
+                  glyphicon_pencil.eq(i).click(function () {
+                    var token = window.localStorage.getItem('token')
+                    var post_ID = aTitle.eq(i).attr('id')
+                    localStorage.setItem('list', post_ID);
+                    window.location.href = 'markdown.html?edit';
+                  })
                 })(i)
               }
             }
@@ -291,53 +307,11 @@
       })(i)
     }
 
-
-
     //创建新文章
     $('.addel-add').click(function () {
         var token = window.localStorage.getItem('token');
-        console.log(token);
-        /*$.ajax({
-          type: 'get',
-          url: 'http://hrsoft.net/posts/8197',*/
-         /* headers:{
-            'token':token
-          },
-          beforeSend: function (request) {
-            request.setRequestHeader('token', token);
-          },*/
-         /* dataType: 'JSON',
-          success: function (result) {
-            if (result.code == 0) {*/
-              window.location.href = 'markdown.html';
-          /*    console.log("success");
-              $("#abc").attr("value","456");
-            }
-          }*/
+        window.location.href = 'markdown.html';
         })
-    //修改文章內容
-    $('.glyphicon-pencil').click(function () {
-        var page = window.localStorage.getItem('page');
-        var token = window.localStorage.getItem('token');
-        console.log(token);
-      /*window.location.href = 'markdown.html';*/
-        $.ajax({
-          type: "put",
-          url: 'http://hrsoft.net/posts/1',
-          beforeSend: function (request) {
-            request.setRequestHeader('token', token)
-          },
-          dataType: 'JSON',
-          success: function (result) {
-            if (result.code == 0) {
-              window.location.href = 'markdown.html';
-              console.log("success");
-            }
-          }
-        })
-      }
-    )
-
   })
 </script>
 </body>

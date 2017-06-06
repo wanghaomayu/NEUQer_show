@@ -204,12 +204,39 @@
     articleInput.addEventListener('keyup', () => {
       throttle(addArticle);
   })
+
+    //进入修改页面渲染数据
+    var str = location.href;
+    var num=str.indexOf("?");
+    str=str.substr(num+1);
+    var list= window.localStorage.getItem('list');
+    if(str == "edit"){
+      $.ajax({
+        type:"GET",
+        url:"http://hrsoft.net/posts/"+list,
+        dataType: "json",
+        data:'{}',
+        success: function(json){
+          if(json.code === 0){
+            window.localStorage.setItem('strContent',json.data.content);
+              /*window.location.href= 'news.html'*/
+            console.log(json.data.content);
+            $("#titleInput").val(json.data.title);
+            $("#articleInput").val(json.data.content);
+          }else if(json.code === 3001){
+            alert("文章不存在！")
+          }
+        }
+      })
+    }
+
     //提交新建的数据
       $('.submit').click(function () {
-        var str = window.location.href;
+        var str = location.href;
         var num=str.indexOf("?");
-        str=str.substr(num+1); //取得所有参数   stringvar.substr(start [, length ]
-        if(!str){
+        str=str.substr(num+1);
+        console.log(str);
+        if(str!== "edit"){
           var token = window.localStorage.getItem('token')
           var title=$("#titleInput").val();
           var content=$("#articleInput").val();
@@ -227,7 +254,7 @@
             success: function (result) {
               if (result.code == 0) {
                 console.log("success");
-                  /*    window.location.href = 'manageNews.html';*/
+                window.location.href = 'manageNews.html';
               }
             }
           })
@@ -235,11 +262,10 @@
           var token = window.localStorage.getItem('token')
           var title=$("#titleInput").val();
           var content=$("#articleInput").val();
-          var list= window.localStorage.getItem('id');
-          console.log(list);
+          var list= window.localStorage.getItem('list');
           $.ajax({
             type: 'POST',
-            url: 'http://hrsoft.net/posts/+list+/update',
+            url: 'http://hrsoft.net/posts/'+list+'/update',
             headers:{
               'token':token
             },
@@ -252,7 +278,7 @@
               if (result.code == 0) {
                 console.log("success");
                 console.log(localStorage.getItem('token'))
-                  /*window.location.href = 'manageNews.html';*/
+                window.location.href = 'manageNews.html';
               }
             }
           })
