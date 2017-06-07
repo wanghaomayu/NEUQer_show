@@ -7,6 +7,7 @@
 .title{
     display: flex;
     justify-content: center;
+    margin-bottom: 150px;
 }
 
 .goBack{
@@ -22,7 +23,13 @@
     /*bottom: 20px;*/
 }
 
-/*team*/
-.teamImg{
+.list-group-item{
+    width: 50%;
+    margin: 0 auto;
+    /*display: flex;*/
+    /*justify-content: center;*/
+}
 
+.addel{
+    /*width: 80%;*/
 }
