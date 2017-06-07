@@ -1,6 +1,7 @@
 /* 
 Google Maps
 */
+/*
 var map = '';
 var center;
 
@@ -25,13 +26,14 @@ function initialize() {
 function calculateCenter() {
   center = map.getCenter();
 }
+*/
 
-function loadGoogleMap(){
+/*function loadGoogleMap(){
     var script = document.createElement('script');
     script.type = 'text/javascript';
     script.src = 'https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&' + 'callback=initialize';
     document.body.appendChild(script);
-}
+}*/
 
 /* HTML document is loaded. DOM is ready. 
 -------------------------------------------*/
