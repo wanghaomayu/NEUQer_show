@@ -39,18 +39,15 @@
     <div class="page-header title">
         <h1>不洗碗工作室日常新闻管理</h1>
     </div>
-    <div class="container">
+    <div class="container app">
         <div class="row">
             <div class="col-sm-6 col-sm-offset-3">
 
                 <div class="addel">
-
-                    <h2>消息管理</h2>
-
                     <div class="form-group target">
                         <div class="input-group">
                             <!--文章标题-->
-                            <input type="text" name="contacts[]" class="form-control" value="文章一">
+                            <input type="text" name="contacts[]" class="form-control" value="">
 
                             <span class="input-group-btn">
                                     <!--编辑修改文章-->
@@ -67,7 +64,7 @@
 
                     <div class="form-group target">
                         <div class="input-group">
-                            <input type="text" name="contacts[]" class="form-control" id="abc" value="文章二">
+                            <input type="text" name="contacts[]" class="form-control" id="abc" value="">
                             <span class="input-group-btn">
                             <button type="button" class="btn btn-default" aria-label="Left Align">
                                   <i class="glyphicon glyphicon-pencil" aria-hidden="true"></i>
@@ -81,7 +78,7 @@
 
                     <div class="form-group target">
                         <div class="input-group">
-                            <input type="text" name="contacts[]" class="form-control" value="文章三">
+                            <input type="text" name="contacts[]" class="form-control" value="">
                             <span class="input-group-btn">
                             <button type="button" class="btn btn-default" aria-label="Left Align">
                                   <i class="glyphicon glyphicon-pencil" aria-hidden="true"></i>
@@ -95,7 +92,7 @@
 
                     <div class="form-group target">
                         <div class="input-group">
-                            <input type="text" name="contacts[]" class="form-control" value="文章四">
+                            <input type="text" name="contacts[]" class="form-control" value="">
                             <span class="input-group-btn">
                             <button type="button" class="btn btn-default" aria-label="Left Align">
                                   <i class="glyphicon glyphicon-pencil" aria-hidden="true"></i>
@@ -109,7 +106,7 @@
 
                     <div class="form-group target">
                         <div class="input-group">
-                            <input type="text" name="contacts[]" class="form-control" value="文章五">
+                            <input type="text" name="contacts[]" class="form-control" value="">
                             <span class="input-group-btn">
                             <button type="button" class="btn btn-default" aria-label="Left Align">
                                   <i class="glyphicon glyphicon-pencil" aria-hidden="true"></i>
@@ -123,7 +120,7 @@
 
                     <div class="form-group target">
                         <div class="input-group">
-                            <input type="text" name="contacts[]" class="form-control" value="文章六">
+                            <input type="text" name="contacts[]" class="form-control" value="">
                             <span class="input-group-btn">
                             <button type="button" class="btn btn-default" aria-label="Left Align">
                                   <i class="glyphicon glyphicon-pencil" aria-hidden="true"></i>
@@ -217,13 +214,14 @@
                     dataType: 'JSON',
                     success: function(){
                       console.log("删除成功!")
+                      alert()
                       aTitle.eq(i).remove('value')
                       window.location.reload()
                     }
                   })
                   return false
                 })
-            //修改
+//              修改
                 glyphicon_pencil.eq(i).click(function () {
                   var token = window.localStorage.getItem('token')
                   var post_ID = aTitle.eq(i).attr('id')

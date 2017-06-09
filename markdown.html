@@ -120,172 +120,172 @@
     </style>
 </head>
 <body>
-<div class="page-header title">
-       <h1>不洗碗工作室文章编辑</h1>
-</div>
-<div class="left-wrapper">
-    <input type="text" id="titleInput" value="无标题文章">
-    <ul class="tools"></ul>
-    <textarea id="articleInput"></textarea>
-</div>
-<div class="right-wrapper">
-    <button type="button" class="btn btn-default submit">提交</button>
-    <button type="button" class="btn btn-default submit">提交</button>
-    <div class="output">
-        <h1 id="titleOutput"></h1>
-        <div id="articleOutput"></div>
+    <div class="page-header title1">
+           <h1>不洗碗工作室文章编辑</h1>
     </div>
-</div>
-<script>
-  window.onload = () => {
-//          获取到对应的输入输出节点
-    const titleInput = document.getElementById('titleInput');
-    let titleOutput = document.getElementById('titleOutput');
-//          默认选中方便用户删除
-    titleInput.select();
-//          节流函数避免连续触发事件
-    let throttle = (method) => {
-      method.tId && clearTimeout(method.tId);
-      method.tId = setTimeout(function () {
-        method();
-      }, 140);
-    };
-//          输出标题的函数
-    let addTitle = () => {
-      titleOutput.innerHTML = titleInput.value;
-    };
-//          输出默认的占位符
-    addTitle();
-//          绑定按下键盘触发，keypress对功能键、中文输入法没有反应
-    titleInput.addEventListener('keyup', () => {
-      throttle(addTitle);
-  });
-//              定义标题循环次数
-    const circles = 6;
-//              处理html标签
-    const reg1 = /(<)([^>]+)(>)/g;
-//              判断是否需要循环
-    const reg2 = /^ *#{1,6}(( +[^\s]|[^#\s]).*)/gm;
-//              reg3用来循环改变标题
-    let reg3;
-//              给符合格式的创建ul和li
-    const reg4 = /(^ *|<\/.+>) *- (\S.*)/gm;
-//              给符合格式的创建ol和li
-    const reg5 = /(^ *|\/.+>) *\d\. (\S.*)/gm;
-//              去掉多余的ul、ol
-    const reg6 = /<\/([uo]l)>\n? *<\1>/g;
-//              blockquote
-    const reg7 = /(^ *|\/.+>) *&gt; ((\S.*\n?)+)/gm;
-//              单行代码
-    const reg8 = /(^ *|\/.+>) *`([^`\n]+)`/gm;
-//              代码块
-    const reg9 = /~~~\n((.*\n)+)~~~/g;
-//              br
-    const reg10 = /([^>\n]+)\n/g;
-    const articleInput = document.getElementById('articleInput');
-    let articleOutput = document.getElementById('articleOutput');
-//         输出文章的函数
-    let addArticle = () => {
-      articleOutput.innerHTML = articleInput.value
-        .replace(reg1, '<<span>$2</span>>');
-      if (articleInput.value.match(reg2)) {
-        for (let i = circles; i > 0; i--) {
-          reg3 = new RegExp(`^ *(#{${i}})(( +[^\s]|[^#\s]).*)(\n?)`, 'gm');
-          articleOutput.innerHTML = articleOutput.innerHTML.replace(reg3, `<h${i}>$2</h${i}>`);
-        }
-      }
-      articleOutput.innerHTML = articleOutput.innerHTML.replace(reg4, '$1<ul><li>$2</li></ul>')
-        .replace(reg5, '$1<ol><li>$2</li></ol>').replace(reg6, '')
-        .replace(reg7, '$1<blockquote>$2</blockquote>')
-        .replace(reg8, '<pre>$2</pre>')
-        .replace(reg9, '<pre>$1</pre>').replace(reg10, '$1<br>');
-    };
-//          绑定按下键盘触发
-    articleInput.addEventListener('keyup', () => {
-      throttle(addArticle);
-  })
-
-    //进入修改页面渲染数据
-    var str = location.href;
-    var num=str.indexOf("?");
-    str=str.substr(num+1);
-    var list= window.localStorage.getItem('list');
-    if(str == "edit"){
-      $.ajax({
-        type:"GET",
-        url:"http://hrsoft.net/posts/"+list,
-        dataType: "json",
-        data:'{}',
-        success: function(json){
-          if(json.code === 0){
-            window.localStorage.setItem('strContent',json.data.content);
-              /*window.location.href= 'news.html'*/
-            console.log(json.data.content);
-            $("#titleInput").val(json.data.title);
-            $("#articleInput").val(json.data.content);
-          }else if(json.code === 3001){
-            alert("文章不存在！")
+    <div class="left-wrapper">
+        <input type="text" id="titleInput" value="无标题文章">
+        <ul class="tools"></ul>
+        <textarea id="articleInput"></textarea>
+    </div>
+    <div class="right-wrapper">
+        <button type="button" class="btn btn-default submit">提交</button>
+        <button type="button" class="btn btn-default submit">提交</button>
+        <div class="output">
+            <h1 id="titleOutput"></h1>
+            <div id="articleOutput"></div>
+        </div>
+    </div>
+    <script>
+      window.onload = () => {
+    //          获取到对应的输入输出节点
+        const titleInput = document.getElementById('titleInput');
+        let titleOutput = document.getElementById('titleOutput');
+    //          默认选中方便用户删除
+        titleInput.select();
+    //          节流函数避免连续触发事件
+        let throttle = (method) => {
+          method.tId && clearTimeout(method.tId);
+          method.tId = setTimeout(function () {
+            method();
+          }, 140);
+        };
+    //          输出标题的函数
+        let addTitle = () => {
+          titleOutput.innerHTML = titleInput.value;
+        };
+    //          输出默认的占位符
+        addTitle();
+    //          绑定按下键盘触发，keypress对功能键、中文输入法没有反应
+        titleInput.addEventListener('keyup', () => {
+          throttle(addTitle);
+      });
+    //              定义标题循环次数
+        const circles = 6;
+    //              处理html标签
+        const reg1 = /(<)([^>]+)(>)/g;
+    //              判断是否需要循环
+        const reg2 = /^ *#{1,6}(( +[^\s]|[^#\s]).*)/gm;
+    //              reg3用来循环改变标题
+        let reg3;
+    //              给符合格式的创建ul和li
+        const reg4 = /(^ *|<\/.+>) *- (\S.*)/gm;
+    //              给符合格式的创建ol和li
+        const reg5 = /(^ *|\/.+>) *\d\. (\S.*)/gm;
+    //              去掉多余的ul、ol
+        const reg6 = /<\/([uo]l)>\n? *<\1>/g;
+    //              blockquote
+        const reg7 = /(^ *|\/.+>) *&gt; ((\S.*\n?)+)/gm;
+    //              单行代码
+        const reg8 = /(^ *|\/.+>) *`([^`\n]+)`/gm;
+    //              代码块
+        const reg9 = /```\n((.*\n)+)```/g;
+    //              br
+        const reg10 = /([^>\n]+)\n/g;
+        const articleInput = document.getElementById('articleInput');
+        let articleOutput = document.getElementById('articleOutput');
+    //         输出文章的函数
+        let addArticle = () => {
+          articleOutput.innerHTML = articleInput.value
+            .replace(reg1, '<<span>$2</span>>');
+          if (articleInput.value.match(reg2)) {
+            for (let i = circles; i > 0; i--) {
+              reg3 = new RegExp(`^ *(#{${i}})(( +[^\s]|[^#\s]).*)(\n?)`, 'gm');
+              articleOutput.innerHTML = articleOutput.innerHTML.replace(reg3, `<h${i}>$2</h${i}>`);
+            }
           }
-        }
+          articleOutput.innerHTML = articleOutput.innerHTML.replace(reg4, '$1<ul><li>$2</li></ul>')
+            .replace(reg5, '$1<ol><li>$2</li></ol>').replace(reg6, '')
+            .replace(reg7, '$1<blockquote>$2</blockquote>')
+            .replace(reg8, '<pre>$2</pre>')
+            .replace(reg9, '<pre>$1</pre>').replace(reg10, '$1<br>');
+        };
+    //          绑定按下键盘触发
+        articleInput.addEventListener('keyup', () => {
+          throttle(addArticle);
       })
-    }
 
-    //提交新建的数据
-      $('.submit').click(function () {
+        //进入修改页面渲染数据
         var str = location.href;
         var num=str.indexOf("?");
         str=str.substr(num+1);
-        console.log(str);
-        if(str!== "edit"){
-          var token = window.localStorage.getItem('token')
-          var title=$("#titleInput").val();
-          var content=$("#articleInput").val();
+        var list= window.localStorage.getItem('list');
+        if(str == "edit"){
           $.ajax({
-            type: 'POST',
-            url: 'http://hrsoft.net/posts',
-            headers:{
-              'token':token
-            },
-            data:{title:title,content:content},
-            beforeSend: function (request) {
-              request.setRequestHeader('token', token)
-            },
-            dataType: 'JSON',
-            success: function (result) {
-              if (result.code == 0) {
-                console.log("success");
-                window.location.href = 'manageNews.html';
-              }
-            }
-          })
-        }else{
-          var token = window.localStorage.getItem('token')
-          var title=$("#titleInput").val();
-          var content=$("#articleInput").val();
-          var list= window.localStorage.getItem('list');
-          $.ajax({
-            type: 'POST',
-            url: 'http://hrsoft.net/posts/'+list+'/update',
-            headers:{
-              'token':token
-            },
-            data:{title:title,content:content},
-            beforeSend: function (request) {
-              request.setRequestHeader('token', token)
-            },
-            dataType: 'JSON',
-            success: function (result) {
-              if (result.code == 0) {
-                console.log("success");
-                console.log(localStorage.getItem('token'))
-                window.location.href = 'manageNews.html';
+            type:"GET",
+            url:"http://hrsoft.net/posts/"+list,
+            dataType: "json",
+            data:'{}',
+            success: function(json){
+              if(json.code === 0){
+                window.localStorage.setItem('strContent',json.data.content);
+                  /*window.location.href= 'news.html'*/
+                console.log(json.data.content);
+                $("#titleInput").val(json.data.title);
+                $("#articleInput").val(json.data.content);
+              }else if(json.code === 3001){
+                alert("文章不存在！")
               }
             }
           })
         }
 
-      })
-  }
-</script>
+        //提交新建的数据
+          $('.submit').click(function () {
+            var str = location.href;
+            var num=str.indexOf("?");
+            str=str.substr(num+1);
+            console.log(str);
+            if(str!== "edit"){
+              var token = window.localStorage.getItem('token')
+              var title=$("#titleInput").val();
+              var content=$("#articleInput").val();
+              $.ajax({
+                type: 'POST',
+                url: 'http://hrsoft.net/posts',
+                headers:{
+                  'token':token
+                },
+                data:{title:title,content:content},
+                beforeSend: function (request) {
+                  request.setRequestHeader('token', token)
+                },
+                dataType: 'JSON',
+                success: function (result) {
+                  if (result.code == 0) {
+                    console.log("success");
+                    window.location.href = 'manageNews.html';
+                  }
+                }
+              })
+            }else{
+              var token = window.localStorage.getItem('token')
+              var title=$("#titleInput").val();
+              var content=$("#articleInput").val();
+              var list= window.localStorage.getItem('list');
+              $.ajax({
+                type: 'POST',
+                url: 'http://hrsoft.net/posts/'+list+'/update',
+                headers:{
+                  'token':token
+                },
+                data:{title:title,content:content},
+                beforeSend: function (request) {
+                  request.setRequestHeader('token', token)
+                },
+                dataType: 'JSON',
+                success: function (result) {
+                  if (result.code == 0) {
+                    console.log("success");
+                    console.log(localStorage.getItem('token'))
+                    window.location.href = 'manageNews.html';
+                  }
+                }
+              })
+            }
+
+          })
+      }
+    </script>
 </body>
 </html>

@@ -10,6 +10,11 @@
     margin-bottom: 150px;
 }
 
+.title1{
+    display: flex;
+    justify-content: center;
+}
+
 .goBack{
     float: right;
     margin-top:5px;

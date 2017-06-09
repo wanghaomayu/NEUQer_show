@@ -54,7 +54,7 @@
          var strContent = encodeURI($(".list-group-item").html())
          var strNumber = encodeURI($(".list-group-item").size)
          var pageA = $(".pageN")
-         var temp = ''
+         var temp = null
          var maxPage = 2000
          $.ajax({
            type:"GET",
@@ -91,7 +91,6 @@
                      }
                    })
                  })
-
                })(i)
              }
            }
@@ -99,13 +98,63 @@
 
          $(".Pre").click(function(){
              for(var j=0;j<5;j++){
+//               (function (i) {
                temp = pageA.eq(j).html()-1;
                temp -= 5;
                if(temp>=-5 && temp <=-1){
                  temp +=5
                  pageA.eq(j).html(temp+1)
-               }else{
-                   pageA.eq(j).html(temp+1)
+                 if(temp === 0){
+                   alert("已经是第一页！")
+                 }else{}
+               }
+               else{
+                 pageA.eq(j).html(temp+1)
+                 var updatePageLeft = temp - 4
+                 console.log( pageA.eq(j).html())
+//                   window.localStorage.setItem("updatePageLeft",temp-3)
+//                 var updatePageLeft = window.localStorage.getItem("updatePageLeft")
+//                 console.log(updatePageLeft)
+                 $.ajax({
+                   type:"GET",
+                   url:"http://hrsoft.net/posts?page="+updatePageLeft+"&size=6",
+                   dataType: "json",
+                   data:{ posts: strContent , count: strNumber},
+                   success: function(json){
+                     var strTitle = '';
+//                     var strID = '';
+                     var aTitle = $('.list-group-item');
+
+                     for(var i=0;i < json.data.posts.length;i++){
+                       (function (i) {
+                         strTitle = json.data.posts[i].title;
+                         strID = json.data.posts[i].id;
+                         aTitle.eq(i).attr("id",strID).text(strTitle);   //获取文章列表的核心
+
+                         //在进入某一页之后的查看文章内容
+                         aTitle.eq(i).click(function(){
+                           var post_ID = aTitle.eq(i).attr('id')
+                           $.ajax({
+                             type:"GET",
+                             url:"http://hrsoft.net/posts/"+post_ID,
+                             dataType: "json",
+                             data:'{}',
+                             success: function(json){
+                               if(json.code === 0){
+                                 window.localStorage.setItem('strContent',json.data.content);
+                                 window.location.href= 'news.html'
+                                 console.log(json.data.content);
+                               }else if(json.code === 3001){
+                                 alert("文章不存在！")
+                               }
+                             }
+                           })
+                         })
+
+                       })(i)
+                     }
+                   }
+                 })
                }
              }
          })
@@ -117,9 +166,11 @@
              if(temp === maxPage){alert("已经最后页！")}
              else{
                pageA.eq(j).html(temp+1)
+               var updatePageRight = temp - 4
+               console.log( pageA.eq(j).html())
                $.ajax({
                  type:"GET",
-                 url:"http://hrsoft.net/posts?page=0"+"&size=6",
+                 url:"http://hrsoft.net/posts?page="+updatePageRight+"&size=6",
                  dataType: "json",
                  data:{ posts: strContent , count: strNumber},
                  success: function(json){
@@ -161,6 +212,7 @@
            }
          })
 
+//        点击页码
          for(var i=0;i<pageA.length;i++){
            (function (i) {
 //             点击每个分页请求的数据不同
