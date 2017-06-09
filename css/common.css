@@ -7,9 +7,13 @@
 .title{
     display: flex;
     justify-content: center;
-    margin-bottom: 150px;
+    margin-bottom: 100px;
 }
-
+.title-markdown{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 0px;
+}
 .goBack{
     float: right;
     margin-top:5px;
