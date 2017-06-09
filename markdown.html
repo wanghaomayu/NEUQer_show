@@ -179,7 +179,7 @@
 //              单行代码
     const reg8 = /(^ *|\/.+>) *`([^`\n]+)`/gm;
 //              代码块
-    const reg9 = /~~~\n((.*\n)+)~~~/g;
+    const reg9 = /```\n((.*\n)+)```/g;
 //              br
     const reg10 = /([^>\n]+)\n/g;
     const articleInput = document.getElementById('articleInput');

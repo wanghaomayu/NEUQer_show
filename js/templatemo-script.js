@@ -48,7 +48,6 @@ $(function(){
   //应用Wow的js一步
   new WOW().init();
 
-  loadGoogleMap();
   //控制轮播图播放速度
   $('.carousel').carousel({
     interval: 3000
