@@ -333,7 +333,7 @@ h1 { margin: 0; }
 #about .col-md-5 img
   {
     width: 200px;
-    height: 100px;
+    height: 150px;
   }
 #about p
   {
@@ -498,7 +498,7 @@ ul
 /* start newsletter */
 #newsletter
   {
-    background: url('../images/newsletter-bg.jpg') no-repeat center center;
+    /*background: url('') no-repeat center center;*/
     background-size: cover;
    background-attachment: fixed;
     color: #FFFFFF;
