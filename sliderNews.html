@@ -2,12 +2,13 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=1.5, user-scalable=yes">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=1.5, user-scalable=yes">
   <title>日常新闻</title>
-  <link rel="shortcut icon" href="favicon.ico"/>
-  <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" >
-  <link rel="stylesheet" href="css/normalize.css"/>
-  <link rel="stylesheet" href="css/common.css"/>
+  <link rel="shortcut icon" href="favicon.ico" />
+  <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/normalize.css" />
+  <link rel="stylesheet" href="css/common.css" />
 
   <script src="js/jquery.js"></script>
   <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -45,48 +46,49 @@
           </ul>
       </nav>
 
-      <!--<input class="goBack btn btn-default" type="button" value="返回主页"-->
-             <!--onclick="window.location.href='index.html'">-->
+        <!--<input class="goBack btn btn-default" type="button" value="返回主页"-->
+        <!--onclick="window.location.href='index.html'">-->
     </div>
 
     <script>
-       $(function(){
-         var strContent = encodeURI($(".list-group-item").html())
-         var strNumber = encodeURI($(".list-group-item").size)
-         var pageA = $(".pageN")
+       $(function () {
+         var strContent = encodeURI($('.list-group-item').html())
+         var strNumber = encodeURI($('.list-group-item').size)
+         var pageA = $('.pageN')
          var temp = null
-         var maxPage = 2000
-         $.ajax({
-           type:"GET",
-           url:"http://hrsoft.net/posts?page=0"+"&size=6",
-           dataType: "json",
-           data:{ posts: strContent , count: strNumber},
-           success: function(json){
-             var strTitle = '';
-             var strID = '';
-             var aTitle = $('.list-group-item');
+//         var maxPage = null
 
-             for(var i=0;i < json.data.posts.length;i++){
+         $.ajax({
+           type: 'GET',
+           url: 'http://hrsoft.net/posts?page=0' + '&size=6',
+           dataType: 'json',
+           data: {posts: strContent, count: strNumber},
+           success: function (json) {
+             var strTitle = ''
+             var strID = ''
+             var aTitle = $('.list-group-item')
+             window.localStorage.setItem('maxPage',json.data.count)
+             for (var i = 0; i < json.data.posts.length; i++) {
                (function (i) {
-                 strTitle = json.data.posts[i].title;
-                 strID = json.data.posts[i].id;
-                 aTitle.eq(i).attr("id",strID).text(strTitle);   //获取文章列表的核心
+                 strTitle = json.data.posts[i].title
+                 strID = json.data.posts[i].id
+                 aTitle.eq(i).attr('id', strID).text(strTitle)   //获取文章列表的核心
 
                  //在进入某一页之后的查看文章内容
-                 aTitle.eq(i).click(function(){
+                 aTitle.eq(i).click(function () {
                    var post_ID = aTitle.eq(i).attr('id')
                    $.ajax({
-                     type:"GET",
-                     url:"http://hrsoft.net/posts/"+post_ID,
-                     dataType: "json",
-                     data:'{}',
-                     success: function(json){
-                       if(json.code === 0){
-                           window.localStorage.setItem('strContent',json.data.content);
-                           window.location.href= 'news.html'
-                           console.log(json.data.content);
-                       }else if(json.code === 3001){
-                         alert("文章不存在！")
+                     type: 'GET',
+                     url: 'http://hrsoft.net/posts/' + post_ID,
+                     dataType: 'json',
+                     data: '{}',
+                     success: function (json) {
+                       if (json.code === 0) {
+                         window.localStorage.setItem('strContent', json.data.content)
+                         window.location.href = 'news.html'
+                         console.log(json.data.content)
+                       } else if (json.code === 3001) {
+                         alert('文章不存在！')
                        }
                      }
                    })
@@ -96,56 +98,55 @@
            }
          })
 
-         $(".Pre").click(function(){
-             for(var j=0;j<5;j++){
+         $('.Pre').click(function () {
+           for (var j = 0; j < 5; j++) {
 //               (function (i) {
-               temp = pageA.eq(j).html()-1;
-               temp -= 5;
-               if(temp>=-5 && temp <=-1){
-                 temp +=5
-                 pageA.eq(j).html(temp+1)
-                 if(temp === 0){
-                   alert("已经是第一页！")
-                 }else{}
-               }
-               else{
-                 pageA.eq(j).html(temp+1)
-                 var updatePageLeft = temp - 4
-                 console.log( pageA.eq(j).html())
-//                   window.localStorage.setItem("updatePageLeft",temp-3)
-//                 var updatePageLeft = window.localStorage.getItem("updatePageLeft")
-//                 console.log(updatePageLeft)
-                 $.ajax({
-                   type:"GET",
-                   url:"http://hrsoft.net/posts?page="+updatePageLeft+"&size=6",
-                   dataType: "json",
-                   data:{ posts: strContent , count: strNumber},
-                   success: function(json){
-                     var strTitle = '';
-//                     var strID = '';
-                     var aTitle = $('.list-group-item');
+             temp = pageA.eq(j).html() - 1
+             temp -= 5
+             if (temp >= -5 && temp <= -1) {
+               temp += 5
+               pageA.eq(j).html(temp + 1)
+               if (temp === 0) {
+                 alert('已经是第一页！')
+               } else {}
+             }
+             else {
+               pageA.eq(j).html(temp + 1)
+               var updatePageLeft = temp - 4
+               $.ajax({
+                 type: 'GET',
+                 url: 'http://hrsoft.net/posts?page=' + updatePageLeft + '&size=6',
+                 dataType: 'json',
+                 data: {posts: strContent, count: strNumber},
+                 success: function (json) {
+                   var strTitle = ''
+                     var strID = '';
+                   var aTitle = $('.list-group-item')
 
-                     for(var i=0;i < json.data.posts.length;i++){
+//                     console.log(json.data.posts.length)
+
+                   if (json.code === 0) {
+                     for (var i = 0; i < json.data.posts.length; i++) {
                        (function (i) {
-                         strTitle = json.data.posts[i].title;
-                         strID = json.data.posts[i].id;
-                         aTitle.eq(i).attr("id",strID).text(strTitle);   //获取文章列表的核心
+                         strTitle = json.data.posts[i].title
+                         strID = json.data.posts[i].id
+                         aTitle.eq(i).attr('id', strID).text(strTitle)   //获取文章列表的核心
 
                          //在进入某一页之后的查看文章内容
-                         aTitle.eq(i).click(function(){
+                         aTitle.eq(i).click(function () {
                            var post_ID = aTitle.eq(i).attr('id')
                            $.ajax({
-                             type:"GET",
-                             url:"http://hrsoft.net/posts/"+post_ID,
-                             dataType: "json",
-                             data:'{}',
-                             success: function(json){
-                               if(json.code === 0){
-                                 window.localStorage.setItem('strContent',json.data.content);
-                                 window.location.href= 'news.html'
-                                 console.log(json.data.content);
-                               }else if(json.code === 3001){
-                                 alert("文章不存在！")
+                             type: 'GET',
+                             url: 'http://hrsoft.net/posts/' + post_ID,
+                             dataType: 'json',
+                             data: '{}',
+                             success: function (json) {
+                               if (json.code === 0) {
+                                 window.localStorage.setItem('strContent', json.data.content)
+                                 window.location.href = 'news.html'
+                                 console.log(json.data.content)
+                               } else if (json.code === 3001) {
+                                 alert('文章不存在！')
                                }
                              }
                            })
@@ -154,58 +155,62 @@
                        })(i)
                      }
                    }
-                 })
-               }
+                 }
+               })
              }
+           }
          })
 
-         $(".Next").click(function(){
-           for(var j=0;j<5;j++){
-             temp = pageA.eq(j).html()-1;
-             temp += 5;
-             if(temp === maxPage){alert("已经最后页！")}
-             else{
-               pageA.eq(j).html(temp+1)
+         $('.Next').click(function () {
+           for (var j = 0; j < 5; j++) {
+             temp = pageA.eq(j).html() - 1
+             temp += 5
+             var maxPage = window.localStorage.getItem('maxPage')
+             if (temp === maxPage) {alert('已经最后页！')}
+             else {
+               pageA.eq(j).html(temp + 1)
                var updatePageRight = temp - 4
-               console.log( pageA.eq(j).html())
+//               console.log(updatePageRight)
                $.ajax({
-                 type:"GET",
-                 url:"http://hrsoft.net/posts?page="+updatePageRight+"&size=6",
-                 dataType: "json",
-                 data:{ posts: strContent , count: strNumber},
-                 success: function(json){
-                   var strTitle = '';
-                   var strID = '';
-                   var aTitle = $('.list-group-item');
+                 type: 'GET',
+                 url: 'http://hrsoft.net/posts?page=' + updatePageRight + '&size=6',
+                 dataType: 'json',
+                 data: {posts: strContent, count: strNumber},
+                 success: function (json) {
+                   var strTitle = ''
+                   var strID = ''
+                   var aTitle = $('.list-group-item')
 
-                   for(var i=0;i < json.data.posts.length;i++){
-                     (function (i) {
-                       strTitle = json.data.posts[i].title;
-                       strID = json.data.posts[i].id;
-                       aTitle.eq(i).attr("id",strID).text(strTitle);   //获取文章列表的核心
+                   if (json.code === 0) {
+                     for (var i = 0; i < json.data.posts.length; i++) {
+                       (function (i) {
+                         strTitle = json.data.posts[i].title
+                         strID = json.data.posts[i].id
+                         aTitle.eq(i).attr('id', strID).text(strTitle)   //获取文章列表的核心
 
-                       //在进入某一页之后的查看文章内容
-                       aTitle.eq(i).click(function(){
-                         var post_ID = aTitle.eq(i).attr('id')
-                         $.ajax({
-                           type:"GET",
-                           url:"http://hrsoft.net/posts/"+post_ID,
-                           dataType: "json",
-                           data:'{}',
-                           success: function(json){
-                             if(json.code === 0){
-                               window.localStorage.setItem('strContent',json.data.content);
-                               window.location.href= 'news.html'
-                               console.log(json.data.content);
-                             }else if(json.code === 3001){
-                               alert("文章不存在！")
+                         //在进入某一页之后的查看文章内容
+                         aTitle.eq(i).click(function () {
+                           var post_ID = aTitle.eq(i).attr('id')
+                           $.ajax({
+                             type: 'GET',
+                             url: 'http://hrsoft.net/posts/' + post_ID,
+                             dataType: 'json',
+                             data: '{}',
+                             success: function (json) {
+                               if (json.code === 0) {
+                                 window.localStorage.setItem('strContent', json.data.content)
+                                 window.location.href = 'news.html'
+//                                 console.log(json.data.content)
+                               } else if (json.code === 3001) {
+                                 alert('文章不存在！')
+                               }
                              }
-                           }
+                           })
                          })
-                       })
-
-                     })(i)
+                       })(i)
+                     }
                    }
+
                  }
                })
              }
@@ -213,56 +218,48 @@
          })
 
 //        点击页码
-         for(var i=0;i<pageA.length;i++){
+         for (var i = 0; i < pageA.length; i++) {
            (function (i) {
 //             点击每个分页请求的数据不同
-             pageA.eq(i).click(function(){
-              window.localStorage.setItem("page", pageA.eq(i).html()-1)
+             pageA.eq(i).click(function () {
+               window.localStorage.setItem('page', pageA.eq(i).html() - 1)
 
                var page = window.localStorage.getItem('page')
 
                //手动点击选择页码
                $.ajax({
-                 type:"GET",
-                 url:"http://hrsoft.net/posts?page="+page+"&size=6",
-                 dataType: "json",
-                 data:{ posts: strContent , count: strNumber},
-                 success: function(json){
-                   var strTitle = '';
-                   var strID = '';
-                   var aTitle = $('.list-group-item');
+                 type: 'GET',
+                 url: 'http://hrsoft.net/posts?page=' + page + '&size=6',
+                 dataType: 'json',
+                 data: {posts: strContent, count: strNumber},
+                 success: function (json) {
+                   var strTitle = ''
+                   var strID = ''
+                   var aTitle = $('.list-group-item')
 
-//             function retHTML(){
-//               var str = '<a href="#" class="list-group-item">Dapibus ac facilisis in</a>';
-//               return str;
-//             }
-
-                   for(var i=0;i < json.data.posts.length;i++){
+                   for (var i = 0; i < json.data.posts.length; i++) {
                      (function (i) {
-//                       console.log(json.data.posts[i]);
-                       strTitle = json.data.posts[i].title;
-                       strID = json.data.posts[i].id;
-
-//                 $('.app').append(retHTML);
+                       strTitle = json.data.posts[i].title
+                       strID = json.data.posts[i].id
 
                        //获取文章列表的核心
-                       aTitle.eq(i).attr("id",strID).text(strTitle);
+                       aTitle.eq(i).attr('id', strID).text(strTitle)
 
-                       aTitle.eq(i).click(function(){
+                       aTitle.eq(i).click(function () {
                          var post_ID = aTitle.eq(i).attr('id')
                          $.ajax({
-                           type:"GET",
-                           url:"http://hrsoft.net/posts/"+post_ID,
-                           dataType: "json",
-                           data:'{}',
-                           success: function(json){
-                               if(json.code === 0){
-                                 window.localStorage.setItem('strContent',json.data.content);
-                                 window.location.href= 'news.html'
-                                 console.log(json.data.content);
-                               }else if(json.code === 3001){
-                                 alert("文章不存在！")
-                               }
+                           type: 'GET',
+                           url: 'http://hrsoft.net/posts/' + post_ID,
+                           dataType: 'json',
+                           data: '{}',
+                           success: function (json) {
+                             if (json.code === 0) {
+                               window.localStorage.setItem('strContent', json.data.content)
+                               window.location.href = 'news.html'
+                               console.log(json.data.content)
+                             } else if (json.code === 3001) {
+                               alert('文章不存在！')
+                             }
                            }
                          })
                        })
@@ -273,7 +270,7 @@
              })
            })(i)
          }
-       });
+       })
     </script>
 </body>
 </html>

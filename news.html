@@ -52,15 +52,9 @@
 <script>
       $(function(){
         var md = window.localStorage.getItem('strContent')
-        console.log(md)
-//        $.get(md, function(response, status, xhr){
-//          console.log(response)
-          $(".markdown-body").empty().html(marked(md));
-//          });
+//        console.log(md)
+        $(".markdown-body").empty().html(marked(md));
       })
-//      $(function() {
-//        $(".markdown-body").html = marked('# Marked in browser\n\nRendered by **marked**.');
-//      })
 </script>
 
 </html>
