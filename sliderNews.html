@@ -7,10 +7,10 @@
   <title>日常新闻</title>
   <link rel="shortcut icon" href="favicon.ico" />
   <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <link rel="stylesheet" href="css/normalize.css" />
+  <link rel="stylesheet" href="https://cdn.bootcss.com/normalize/7.0.0/normalize.min.css" >
   <link rel="stylesheet" href="css/common.css" />
 
-  <script src="js/jquery.js"></script>
+  <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
@@ -112,7 +112,7 @@
              }
              else {
                pageA.eq(j).html(temp + 1)
-               var updatePageLeft = temp - 4
+               var updatePageLeft = temp
                $.ajax({
                  type: 'GET',
                  url: 'http://hrsoft.net/posts?page=' + updatePageLeft + '&size=6',
@@ -169,7 +169,8 @@
              if (temp === maxPage) {alert('已经最后页！')}
              else {
                pageA.eq(j).html(temp + 1)
-               var updatePageRight = temp - 4
+               console.log(temp)
+               var updatePageRight = temp
 //               console.log(updatePageRight)
                $.ajax({
                  type: 'GET',
@@ -213,6 +214,7 @@
 
                  }
                })
+
              }
            }
          })
