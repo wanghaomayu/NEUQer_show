@@ -5,11 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>消息管理</title>
+     <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <script src="js/addel.jquery.js"></script>
     <link rel="shortcut icon" href="favicon.ico" />
     <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdn.bootcss.com/normalize/7.0.0/normalize.min.css" >
     <link rel="stylesheet" href="css/common.css">
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 </head>
 <body>
     <div class="page-header title">
@@ -133,8 +136,24 @@
             </div>
         </div>
     </div>
-    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
-    <script src="js/addel.jquery.js"></script>
+<div class="modal fade" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">提醒！</h4>
+      </div>
+      <div class="modal-body">
+        <p>确定删除？</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+        <button type="button" class="btn btn-primary go">确定</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
     <script>
   $(document).ready(function () {
     $('.addel').addel({
@@ -198,9 +217,14 @@
                     dataType: 'JSON',
                     success: function(){
                       console.log("删除成功!")
-                      alert("确定删除？")
-                      aTitle.eq(i).remove('value')
+                      $('.modal').modal({
+                        keyboard: true
+                      })
+                      $('.go').click(function(){
+                        console.log(123)
+                        aTitle.eq(i).remove('value')
                       window.location.reload()
+                      })
                     }
                   })
                   return false
@@ -263,7 +287,17 @@
                       success: function(){
                         console.log("删除成功!")
                         console.log(i)
-                        if(i === 0){alert("确定删除？")}
+                        if(i === 0){
+                          console.log("删除成功!")
+                          $('.modal').modal({
+                            keyboard: true
+                          })
+                          $('.go').click(function(){
+                            console.log(123)
+                            aTitle.eq(i).remove('value')
+                            window.location.reload()
+                          })
+                        }
                         else{}
                         aTitle.eq(i).remove('value')
                         window.location.reload()
@@ -334,7 +368,17 @@
                       success: function(){
                         console.log("删除成功!")
                         console.log(i)
-                        if(i === 0){alert("确定删除？")}
+                        if(i === 0){
+                          console.log("删除成功!")
+                          $('.modal').modal({
+                            keyboard: true
+                          })
+                          $('.go').click(function(){
+                            console.log(123)
+                            aTitle.eq(i).remove('value')
+                            window.location.reload()
+                          })
+                        }
                         else{}
                         aTitle.eq(i).remove('value')
                         window.location.reload()
@@ -409,7 +453,17 @@
                       dataType: 'JSON',
                       success: function(){
                         console.log("删除成功!")
-                        if(i === 0){alert("确定删除？")}
+                        if(i === 0){
+                          console.log("删除成功!")
+                          $('.modal').modal({
+                            keyboard: true
+                          })
+                          $('.go').click(function(){
+                            console.log(123)
+                            aTitle.eq(i).remove('value')
+                            window.location.reload()
+                          })
+                        }
                         else{}
                         aTitle.eq(i).remove('value')
                         window.location.reload()
