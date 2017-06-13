@@ -166,7 +166,7 @@
         var strID = '';
         var aTitle = $('.form-control');
         var addel_delete =  $('.addel-delete');
-        var glyphicon_pencil =  $('.glyphicon-pencil');
+        var btn_default =  $('.btn-default');
 //        window.localStorage.getItem("deleteTitle",aTitle);
         for(var i=0;i < json.data.posts.length;i++){
           (function (i) {
@@ -174,8 +174,14 @@
             strID = json.data.posts[i].id;
             aTitle.eq(i).attr("id",strID);  //获取文章列表的核心+删除的是文章id，故加上
             aTitle.eq(i).attr("value",strTitle).text(strTitle);
-
-
+            //修改
+            btn_default.eq(i).click(function () {
+              var token = window.localStorage.getItem('token')
+              var post_ID = aTitle.eq(i).attr('id')
+              localStorage.setItem('list', post_ID);
+              window.location.href = 'markdown.html?edit';
+              return false
+            })
 //                删除
                 addel_delete.eq(i).click(function () {
                   var token = window.localStorage.getItem('token')
@@ -199,13 +205,7 @@
                   })
                   return false
                 })
-//              修改
-                glyphicon_pencil.eq(i).click(function () {
-                  var token = window.localStorage.getItem('token')
-                  var post_ID = aTitle.eq(i).attr('id')
-                  localStorage.setItem('list', post_ID);
-                  window.location.href = 'markdown.html?edit';
-            })
+
           })(i)
         }
       }
@@ -236,7 +236,7 @@
               var strID = '';
               var aTitle = $('.form-control');
               var addel_delete =  $('.addel-delete');
-              var glyphicon_pencil =  $('.glyphicon-pencil');
+              var btn_default =  $('.btn-default');
 //        window.localStorage.getItem("deleteTitle",aTitle);
               for(var i=0;i < json.data.posts.length;i++){
                 (function (i) {
@@ -272,7 +272,7 @@
                     return false
                   })
 //              修改
-                  glyphicon_pencil.eq(i).click(function () {
+                  btn_default.eq(i).click(function () {
                     var token = window.localStorage.getItem('token')
                     var post_ID = aTitle.eq(i).attr('id')
                     localStorage.setItem('list', post_ID);
@@ -307,7 +307,7 @@
               var strID = '';
               var aTitle = $('.form-control');
               var addel_delete =  $('.addel-delete');
-              var glyphicon_pencil =  $('.glyphicon-pencil');
+              var btn_default =  $('.btn-default');
 //        window.localStorage.getItem("deleteTitle",aTitle);
               for(var i=0;i < json.data.posts.length;i++){
                 (function (i) {
@@ -343,7 +343,7 @@
                     return false
                   })
 //              修改
-                  glyphicon_pencil.eq(i).click(function () {
+                  btn_default.eq(i).click(function () {
                     var token = window.localStorage.getItem('token')
                     var post_ID = aTitle.eq(i).attr('id')
                     localStorage.setItem('list', post_ID);
@@ -377,7 +377,7 @@
               var strID = '';
               var aTitle = $('.form-control');
               var addel_delete =  $('.addel-delete');
-              var glyphicon_pencil =  $('.glyphicon-pencil');
+              var btn_default =  $('.btn-default');
 //             function retHTML(){
 //               var str = '<a href="#" class="list-group-item">Dapibus ac facilisis in</a>';
 //               return str;
@@ -417,7 +417,7 @@
                     return false
                   })
                   //修改
-                  glyphicon_pencil.eq(i).click(function () {
+                  btn_default.eq(i).click(function () {
                     var token = window.localStorage.getItem('token')
                     var post_ID = aTitle.eq(i).attr('id')
                     localStorage.setItem('list', post_ID);
