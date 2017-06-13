@@ -51,9 +51,28 @@
 </body>
 <script>
       $(function(){
-        var md = window.localStorage.getItem('strContent')
+
 //        console.log(md)
-        $(".markdown-body").empty().html(marked(md));
+
+
+        var str = location.href;
+        console.log(location.href)
+        var num=str.indexOf("?");
+        str=str.substr(num+1);
+        $.ajax({
+          type: 'GET',
+          url: 'http://hrsoft.net/posts/' + str,
+          dataType: 'json',
+          data: '{}',
+          success: function (json) {
+            if (json.code === 0) {
+              var md =json.data.content
+              $(".markdown-body").empty().html(marked(md))
+            } else if (json.code === 3001) {
+              alert('文章不存在！')
+            }
+          }
+        })
       })
 </script>
 
