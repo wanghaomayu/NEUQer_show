@@ -64,7 +64,7 @@
         }
         .output {
             overflow-y: auto;
-            padding: 40px 40px 0;
+            padding: 20px 40px 0;
             width: 100%;
             height: 100%;
             box-sizing: border-box;
@@ -104,13 +104,13 @@
         }
         .submit{
             position:absolute;
-            top:10px;
-            right:20px;
+            top:5%;
+            right:5%;
         }
     </style>
 </head>
 <body>
-    <div class="page-header title1">
+    <div class="markdown_title">
            <h1>不洗碗工作室文章编辑</h1>
     </div>
     <div class="left-wrapper">
@@ -118,11 +118,43 @@
         <textarea id="articleInput"></textarea>
     </div>
     <div class="right-wrapper">
-        <button type="button" class="btn btn-default submit">提交</button>
-        <button type="button" class="btn btn-default submit">提交</button>
+        <button type="button" class="btn btn-primary submit">提交</button>
         <div class="output">
             <h1 id="titleOutput"></h1>
             <div id="articleOutput"></div>
+        </div>
+    </div>
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">提交失败</h4>
+                </div>
+                <div class="modal-body">
+                    用户未登录
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                    <a href="login.html"><button type="button" class="btn btn-primary">去登录</button></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="myModal_content" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel_content">提交失败</h4>
+                </div>
+                <div class="modal-body">
+                    内容不能为空
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">关闭</button>
+                </div>
+            </div>
         </div>
     </div>
     <script>
@@ -246,6 +278,14 @@
                   if (result.code === 0) {
                     console.log("success");
                     window.location.href = 'manageNews.html';
+                  }else if(result.code === 1003){
+                    $('#myModal_content').modal({
+                      keyboard: true
+                    })
+                  }else{
+                    $('#myModal').modal({
+                      keyboard: true
+                    })
                   }
                 }
               })
@@ -270,6 +310,10 @@
                     console.log("success");
                     console.log(localStorage.getItem('token'))
                     window.location.href = 'manageNews.html';
+                  }else{
+                    $('#myModal').modal({
+                      keyboard: true
+                    })
                   }
                 }
               })
