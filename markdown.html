@@ -226,12 +226,11 @@
           throttle(addArticle);
       })
 
+
         //进入修改页面渲染数据
         var str = location.href;
         var num=str.indexOf("?");
-        console.log(num)
         str=str.substr(num+1);
-        console.log(str)
         var list= window.localStorage.getItem('list');
         if(str === "edit"){
           $.ajax({
@@ -242,10 +241,10 @@
             success: function(json){
               if(json.code === 0){
                 window.localStorage.setItem('strContent',json.data.content);
-                  /*window.location.href= 'news.html'*/
-                console.log(json.data.content);
                 $("#titleInput").val(json.data.title);
                 $("#articleInput").val(json.data.content);
+                addArticle();
+                addTitle();
               }else if(json.code === 3001){
                 alert("文章不存在！")
               }
