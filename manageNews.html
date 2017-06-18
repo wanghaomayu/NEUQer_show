@@ -45,13 +45,13 @@
                         <div class="input-group">
                             <input type="text" name="contacts[]" class="form-control" id="abc" value="">
                             <span class="input-group-btn">
-                            <button type="button" class="btn btn-default" aria-label="Left Align">
-                                  <i class="glyphicon glyphicon-pencil" aria-hidden="true"></i>
-                            </button>
-                            <button type="button" class="btn btn-danger addel-delete">
-                                <i class="fa fa-remove"></i>
-                            </button>
-                        </span>
+                                <button type="button" class="btn btn-default" aria-label="Left Align">
+                                      <i class="glyphicon glyphicon-pencil" aria-hidden="true"></i>
+                                </button>
+                                <button type="button" class="btn btn-danger addel-delete">
+                                    <i class="fa fa-remove"></i>
+                                </button>
+                            </span>
                         </div>
                     </div>
 
@@ -136,8 +136,8 @@
             </div>
         </div>
     </div>
-    <div class="modal fade" tabindex="-1" role="dialog">
-  <div class="modal-dialog" role="document">
+    <div class="modal fade remove" tabindex="-1" role="dialog">
+         <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -152,8 +152,24 @@
       </div>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
-
+    </div><!-- /.modal -->
+    <div class="modal fade reLogin" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">提醒！</h4>
+              </div>
+              <div class="modal-body">
+                <p>重新登录？</p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-primary goLogin">确定</button>
+              </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
     <script>
   $(document).ready(function () {
     $('.addel').addel({
@@ -223,16 +239,20 @@
                   console.log(json.code)
                   if(json.code === 0){
                     console.log("确认及删除!")
-                    $('.modal').modal({
+                    $('.remove').modal({
                       keyboard: true
                     })
                     $('.go').click(function(){
                       aTitle.eq(i).remove('value')
-                      window.location.reload()
+                      top.location.reload()
                     })
                   }else if(json.code === 2001){
-                    alert("未登录，请先登录！")
-                    window.localStorage.href = 'login.html'
+                    $('.reLogin').modal({
+                      keyboard: true
+                    })
+                    $('.goLogin').click(function(){
+                      window.localStorage.href = 'login.html'
+                    })
                   }else if(json.code === 1001){
                     alert("用户不存在，请先登录！")
                     window.localStorage.href = 'login.html'
@@ -302,14 +322,24 @@
                   dataType: 'JSON',
                   success: function(){
                     if(json.code === 0){
-                      console.log("确认将删除!")
-                      $('.modal').modal({
+                      console.log("确认及删除!")
+                      $('.remove').modal({
                         keyboard: true
                       })
                       $('.go').click(function(){
                         aTitle.eq(i).remove('value')
-                        window.location.reload()
+                        top.location.reload()
                       })
+                    }else if(json.code === 2001){
+                      $('.reLogin').modal({
+                        keyboard: true
+                      })
+                      $('.goLogin').click(function(){
+                        window.localStorage.href = 'login.html'
+                      })
+                    }else if(json.code === 1001){
+                      alert("用户不存在，请先登录！")
+                      window.localStorage.href = 'login.html'
                     }
                   }
                 })
@@ -377,14 +407,24 @@
                   dataType: 'JSON',
                   success: function(){
                     if(json.code === 0){
-                      console.log("确认将删除!")
-                      $('.modal').modal({
+                      console.log("确认及删除!")
+                      $('.remove').modal({
                         keyboard: true
                       })
                       $('.go').click(function(){
                         aTitle.eq(i).remove('value')
-                        window.location.reload()
+                        top.location.reload()
                       })
+                    }else if(json.code === 2001){
+                      $('.reLogin').modal({
+                        keyboard: true
+                      })
+                      $('.goLogin').click(function(){
+                        window.localStorage.href = 'login.html'
+                      })
+                    }else if(json.code === 1001){
+                      alert("用户不存在，请先登录！")
+                      window.localStorage.href = 'login.html'
                     }
                   }
                 })
@@ -452,18 +492,27 @@
                       },
                       dataType: 'JSON',
                       success: function(){
-
-                          console.log("确认将删除!")
-                          $('.modal').modal({
+                        if(json.code === 0){
+                          console.log("确认及删除!")
+                          $('.remove').modal({
                             keyboard: true
                           })
                           $('.go').click(function(){
-                            console.log(123)
                             aTitle.eq(i).remove('value')
-                            window.location.reload()
+                            top.location.reload()
                           })
+                        }else if(json.code === 2001){
+                          $('.reLogin').modal({
+                            keyboard: true
+                          })
+                          $('.goLogin').click(function(){
+                            window.localStorage.href = 'login.html'
+                          })
+                        }else if(json.code === 1001){
+                          alert("用户不存在，请先登录！")
+                          window.localStorage.href = 'login.html'
                         }
-
+                      }
                     })
                     return false
                   })
