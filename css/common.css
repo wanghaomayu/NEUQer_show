@@ -34,6 +34,8 @@
 .list-group-item{
     width: 50%;
     margin: 0 auto;
+    display:block;
+    margin-bottom: 15px;
     /*display: flex;*/
     /*justify-content: center;*/
 }
