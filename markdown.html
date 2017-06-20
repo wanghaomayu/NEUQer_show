@@ -259,37 +259,61 @@
             str=str.substr(num+1);
             console.log(str);
             if(str!== "edit"){
-              var token = window.localStorage.getItem('token')
+              var token = window.sessionStorage.getItem('token')
               var title=$("#titleInput").val();
               var content=$("#articleInput").val();
-              $.ajax({
-                type: 'POST',
-                url: 'http://hrsoft.net/posts',
-                headers:{
-                  'token':token
-                },
-                data:{title:title,content:content},
-                beforeSend: function (request) {
-                  request.setRequestHeader('token', token)
-                },
-                dataType: 'JSON',
-                success: function (result) {
-                  if (result.code === 0) {
-                    console.log("success");
-                    window.location.href = 'manageNews.html';
-                  }else if(result.code === 1003){
-                    $('#myModal_content').modal({
-                      keyboard: true
-                    })
-                  }else{
-                    $('#myModal').modal({
-                      keyboard: true
-                    })
+              console.log(token)
+              if(token == null){
+                $.ajax({
+                  type: 'POST',
+                  url: 'http://hrsoft.net/posts',
+                  data:{title:title,content:content},
+                  dataType: 'JSON',
+                  success: function (result) {
+                    if (result.code === 0) {
+                      console.log("success");
+                      window.location.href = 'manageNews.html';
+                    }else if(result.code === 1003){
+                      $('#myModal_content').modal({
+                        keyboard: true
+                      })
+                    }else{
+                      $('#myModal').modal({
+                        keyboard: true
+                      })
+                    }
                   }
-                }
-              })
+                })
+              }else{
+                $.ajax({
+                  type: 'POST',
+                  url: 'http://hrsoft.net/posts',
+                    headers:{
+                     'token':token
+                     },
+                  data:{title:title,content:content},
+                    beforeSend: function (request) {
+                     request.setRequestHeader('token', token)
+                     },
+                  dataType: 'JSON',
+                  success: function (result) {
+                    if (result.code === 0) {
+                      console.log("success");
+                      window.location.href = 'manageNews.html';
+                    }else if(result.code === 1003){
+                      $('#myModal_content').modal({
+                        keyboard: true
+                      })
+                    }else{
+                      $('#myModal').modal({
+                        keyboard: true
+                      })
+                    }
+                  }
+                })
+              }
             }else{
-              var token = window.localStorage.getItem('token')
+              var token = window.sessionStorage.getItem('token')
               var title=$("#titleInput").val();
               var content=$("#articleInput").val();
               var list= window.localStorage.getItem('list');

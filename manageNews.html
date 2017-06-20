@@ -213,7 +213,7 @@
 
 //          修改
             btn_default.eq(i).click(function () {
-              var token = window.localStorage.getItem('token')
+              var token = window.sessionStorage.getItem('token')
               var post_ID = aTitle.eq(i).attr('id')
               localStorage.setItem('list', post_ID);
               window.location.href = 'markdown.html?edit';
@@ -222,7 +222,7 @@
 
 //          删除
             addel_delete.eq(i).click(function () {
-              var token = window.localStorage.getItem('token')
+              var token = window.sessionStorage.getItem('token')
               var post_ID = aTitle.eq(i).attr('id')
               console.log(token)
               $.ajax({
@@ -308,7 +308,7 @@
 
 //                删除
               addel_delete.eq(i).click(function () {
-                var token = window.localStorage.getItem('token')
+                var token = window.sessionStorage.getItem('token')
                 var post_ID = aTitle.eq(i).attr('id')
                 $.ajax({
                   type:'GET',
@@ -348,7 +348,7 @@
 
 //              修改
               btn_default.eq(i).click(function () {
-                var token = window.localStorage.getItem('token')
+                var token = window.sessionStorage.getItem('token')
                 var post_ID = aTitle.eq(i).attr('id')
                 localStorage.setItem('list', post_ID);
                 window.location.href = 'markdown.html?edit';
@@ -393,7 +393,7 @@
 
 //            删除
               addel_delete.eq(i).click(function () {
-                var token = window.localStorage.getItem('token')
+                var token = window.sessionStorage.getItem('token')
                 var post_ID = aTitle.eq(i).attr('id')
                 $.ajax({
                   type:'GET',
@@ -433,7 +433,7 @@
 
 //            修改
               btn_default.eq(i).click(function () {
-                var token = window.localStorage.getItem('token')
+                var token = window.sessionStorage.getItem('token')
                 var post_ID = aTitle.eq(i).attr('id')
                 localStorage.setItem('list', post_ID);
                 window.location.href = 'markdown.html?edit';
@@ -479,7 +479,7 @@
 
 //                删除
                   addel_delete.eq(i).click(function () {
-                    var token = window.localStorage.getItem('token')
+                    var token = window.sessionStorage.getItem('token')
                     var post_ID = aTitle.eq(i).attr('id')
                     $.ajax({
                       type:'GET',
@@ -518,7 +518,7 @@
                   })
                   //修改
                   btn_default.eq(i).click(function () {
-                    var token = window.localStorage.getItem('token')
+                    var token = window.sessionStorage.getItem('token')
                     var post_ID = aTitle.eq(i).attr('id')
                     localStorage.setItem('list', post_ID);
                     window.location.href = 'markdown.html?edit';
@@ -533,7 +533,7 @@
 
     //创建新文章
     $('.addel-add').click(function () {
-        var token = window.localStorage.getItem('token');
+        var token = window.sessionStorage.getItem('token');
         window.location.href = 'markdown.html';
         })
 
