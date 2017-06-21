@@ -2,12 +2,17 @@
 .app{
     width: 80%;
     margin: 150px auto;
+    margin-top:60px;
 }
 
-.title{
+.titleManage{
     display: flex;
     justify-content: center;
     margin-bottom: 150px;
+}
+.title{
+    display: flex;
+    justify-content: center;
 }
 
 .markdown_title{
@@ -36,6 +41,8 @@
     margin: 0 auto;
     display:block;
     margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
     /*display: flex;*/
     /*justify-content: center;*/
 }

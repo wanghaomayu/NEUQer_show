@@ -12,6 +12,11 @@
 
   <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+   <style>
+       body{
+           font-size:14px;
+       }
+   </style>
 </head>
 <body>
     <div class="page-header title">
@@ -67,8 +72,8 @@
              var strTitle = ''
              var strID = ''
              var aTitle = $('.list-group-item')
-             var strhtml = ''
-             $(".list-group-item").append(strhtml);
+             var strHtml = ''
+             $(".list-group-item").append(strHtml);
              window.localStorage.setItem('maxPage',json.data.count)
                for (var i = 0; i < json.data.posts.length; i++) {
                  (function (i) {
@@ -78,10 +83,11 @@
                    strCreated = json.data.posts[i].created_at
                    strUpdated = json.data.posts[i].updated_at
 
-                   var strhtml = "<span class='label label-primary' style='float:right;max-width:30%;'>" +"修改:" + strCreated + " </span>";
+                   var strHtml = "<span class='label label-primary' " +
+                     "style='float:right;max-width:30%;'>" +"修改:" + strCreated + " </span>";
                    //获取文章列表的核心
                    aTitle.eq(i).attr('id', strID).text(strTitle)
-                   $(".list-group-item").eq(i).append(strhtml);
+                   $(".list-group-item").eq(i).append(strHtml);
                    //在进入某一页之后的查看文章内容
                    var post_ID = aTitle.eq(i).attr('id')
                    var href = 'news.html?'+ post_ID
@@ -117,16 +123,21 @@
                var strTitle = ''
                var strID = '';
                var aTitle = $('.list-group-item')
-
+               var strHtml = ''
+               $(".list-group-item").append(strHtml);
                if (json.code === 0) {
                  for (var i = 0; i < json.data.posts.length; i++) {
                    (function (i) {
                      strTitle = json.data.posts[i].title
                      strID = json.data.posts[i].id
+                     strCreated = json.data.posts[i].created_at
+                     strUpdated = json.data.posts[i].updated_at
 
+                     var strHtml = "<span class='label label-primary' " +
+                       "style='float:right;max-width:30%;'>" +"修改:" + strCreated + " </span>";
                      //获取文章列表的核心
                      aTitle.eq(i).attr('id', strID).text(strTitle)
-
+                     $(".list-group-item").eq(i).append(strHtml);
                      //在进入某一页之后的查看文章内容
                      var post_ID = aTitle.eq(i).attr('id')
                      var href = 'news.html?'+ post_ID
@@ -159,16 +170,21 @@
                var strTitle = ''
                var strID = ''
                var aTitle = $('.list-group-item')
-
+               var strHtml = ''
+               $(".list-group-item").append(strHtml);
                if (json.code === 0) {
                  for (var i = 0; i < json.data.posts.length; i++) {
                    (function (i) {
                      strTitle = json.data.posts[i].title
                      strID = json.data.posts[i].id
+                     strCreated = json.data.posts[i].created_at
+                     strUpdated = json.data.posts[i].updated_at
 
+                     var strHtml = "<span class='label label-primary' " +
+                       "style='float:right;max-width:30%;'>" +"修改:" + strCreated + " </span>";
                      //获取文章列表的核心
                      aTitle.eq(i).attr('id', strID).text(strTitle)
-
+                     $(".list-group-item").eq(i).append(strHtml);
                      //在进入某一页之后的查看文章内容
                      var post_ID = aTitle.eq(i).attr('id')
                      var href = 'news.html?'+ post_ID
@@ -199,15 +215,20 @@
                    var strTitle = ''
                    var strID = ''
                    var aTitle = $('.list-group-item')
-
+                   var strHtml = ''
+                   $(".list-group-item").append(strHtml);
                    for (var i = 0; i < json.data.posts.length; i++) {
                      (function (i) {
                        strTitle = json.data.posts[i].title
                        strID = json.data.posts[i].id
+                       strCreated = json.data.posts[i].created_at
+                       strUpdated = json.data.posts[i].updated_at
 
+                       var strHtml = "<span class='label label-primary' " +
+                         "style='float:right;max-width:30%;'>" +"修改:" + strCreated + " </span>";
                        //获取文章列表的核心
                        aTitle.eq(i).attr('id', strID).text(strTitle)
-
+                       $(".list-group-item").eq(i).append(strHtml);
                        //在进入某一页之后的查看文章内容
                        var post_ID = aTitle.eq(i).attr('id')
                        var href = 'news.html?'+ post_ID
