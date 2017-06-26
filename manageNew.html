@@ -24,7 +24,7 @@
                 <ul class="nav navbar-nav navbar-right">
                     <li class="dropdown"> <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">admin</a>
                     </li>
-                    <li><a href="login.html" onClick="if(!confirm('是否确认退出？'))return false;">退出登录</a></li>
+                    <li><a class="exit">退出登录</a></li>
                 </ul>
               </span> </div>
                 </form>
@@ -166,6 +166,23 @@
             </div>
         </div>
     </div>
+    <div class="modal fade exitLogin" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">提醒！</h4>
+                </div>
+                <div class="modal-body">
+                    <p>确认退出登录？</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary yes">确定</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
     <div class="modal fade remove" tabindex="-1" role="dialog">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -214,6 +231,17 @@
       if (!window.confirm('删除: ' + '"' + event.target.find(':input').val() + '"?')) {
         event.preventDefault()
       }
+    })
+
+    $('.exit').click(function () {
+      $('.exitLogin').modal({
+        keyboard: true
+      })
+      $('.yes').click(function () {
+        window.sessionStorage.token = null;
+        console.log(window.sessionStorage.token)
+        window.location.href = 'login.html';
+      })
     })
 
     //打来页面自动刷新数据（就是自动获取没默认设置page=0页面的size=6个文章标题）
