@@ -1,14 +1,15 @@
+/*首页管理版块css*/
 html{font-family: "Microsoft YaHei";}
 body{background-repeat:no-repeat;}
 *{padding:0px;margin:0px;list-style: none;}
-.mian{background-color: #ffffff;margin: 0 auto;height:400px;text-align: center;overflow: hidden;width:75%;margin:0 auto;}
-.mian span{display: block;margin-top: 10px;}
+.mian{background-color: #ffffff;margin: 0 auto;height:12%;text-align: center;overflow: hidden;width:90%;margin:0 auto;}
+.mian span{display: block;margin-top: 15%;}
 .adleft{width:25%;height: 400px;background: #fff;border-right: 1px solid #ececec;padding-top: 45px;padding-left:20px;padding-right: 20px;float:left;}
 .ico{margin: 0 auto;}
 .title{letter-spacing: 2px;margin-bottom: 10px;color: #7b7b7b;}
 
-.ico{border-radius: 100px;display: block;border: 1px solid #eeeeee;width: 70px;height: 70px;background: #fff;}
-.ico i{font-size: 40px;color: #8e8e8e;line-height: 70px;}
+.ico{border-radius: 100px;display: block;border: 1px solid #eeeeee;width: 25%;height: 20%;background: #fff;}
+.ico i{font-size: 30px;color: #8e8e8e;line-height: 70px;}
 
 .depict{font-size: 13px;color: #9c9c9c;margin-bottom: 10px;border-top: 1px solid #eeeeee;padding-top: 5px;letter-spacing: 1px;}
 

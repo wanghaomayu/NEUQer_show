@@ -975,6 +975,14 @@ body {
 }
 
 
+/*页脚修改 媒体查询 */
+@media screen and (max-width: 420px) {
+  .foot{
+    margin-left:40px;
+  }
+}
+
+
 /*下拉菜单 */
 .btn-group{margin-top:16px;margin-right:-20px;}
 

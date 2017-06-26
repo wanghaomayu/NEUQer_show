@@ -2,13 +2,21 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>参数设置</title>
-    <link rel="shortcut icon" href="favicon.ico"/>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <title>后台管理</title>
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <script src="js/addel.jquery.js"></script>
+    <link rel="shortcut icon" href="favicon.ico" />
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdn.bootcss.com/normalize/7.0.0/normalize.min.css" >
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <style>
-        .img{width:10%;margin-left:30%;margin-top:2%;}
-        h1{font-size:50px;position:relative;top:-150px;text-align: center;margin-top:50px;}
-        .header{}
+        h1{font-size:2em;text-align: center;margin-top:90px;margin-bottom:100px;
+            display: flex;
+            justify-content: center;
+        }
         body{padding:0;margin:0;}
         .form-control{width:50%;display:inline-block;}
         span{color:#66677c;font-size:20px;}
@@ -16,8 +24,37 @@
     </style>
 </head>
 <body>
-   <div class="header">
-       <img src="http://ooerhngjn.bkt.clouddn.com/image/NEUQersettings.jpg" class="img"/>
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false"> <span class="sr-only">切换导航</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+            <a class="navbar-brand" href="index.html">不洗碗工作室</a> </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown"> <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">admin</a>
+                </li>
+                <li><a href="login.html" onClick="if(!confirm('是否确认退出？'))return false;">退出登录</a></li>
+            </ul>
+            </span> </div>
+        </form>
+    </div>
+    </div>
+</nav>
+</header>
+<div class="row">
+    <aside class="col-sm-3 col-md-2 col-lg-2 sidebar">
+        <ul class="nav nav-sidebar">
+            <li class="active"><a href="manageNew.html">内容管理</a></li>
+        </ul>
+        <ul class="nav nav-sidebar">
+            <li><a href="#">轮播图管理</a></li>
+        </ul>
+        <ul class="nav nav-sidebar">
+            <li><a href="settings.html">参数设置</a></li>
+        </ul>
+    </aside>
+</div>
+   <div class="title">
        <h1>参数设置</h1>
    </div>
    <div class="main">

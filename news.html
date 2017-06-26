@@ -25,7 +25,7 @@
             z-index: 100;
         }
         body{
-            background: #D5D6E2;}
+            background: #ffffff;}
         .markdown-body {
             margin: 30px auto;
             width: 65.8%;
@@ -39,6 +39,26 @@
             z-index: 90;
             padding: 130px;
         }
+
+        /*固定动画*/
+        #div_digg {position: fixed;border-radius: 10%;background-color: #fff;width: 133px;right: 40px;bottom: 40px;z-index: 200;box-shadow: rgb(0, 119, 204) 0px 0px 16px 5px;}
+        .diggit {
+            float: left;
+            width: 128px;
+            height: 121px;
+            background: url('http://img.blog.163.com/photo/rS4Jg1jUJf1KlZE1uckjQA==/911978924542834767.jpg') no-repeat;
+            text-align: center;
+            cursor: pointer;
+            margin-top: 2px;
+            padding-top: 5px;
+        }
+        .buryit {
+            display: none;
+        }
+        #digg_tips{
+            position:relative;
+            left:25px;
+        }
     </style>
 
 </head>
@@ -46,8 +66,20 @@
     <div class="page-header title">
        <h1>不洗碗工作室日常新闻</h1>
     </div>
-
     <article class="markdown-body"></article>
+
+    <div id="div_digg" style="display: block;">
+        <div class="diggit" onclick="votePost(5626068,'Digg')">
+            <span class="diggnum" id="digg_count"></span>
+        </div>
+        <div class="buryit" onclick="votePost(5626068,'Bury')">
+            <span class="burynum" id="bury_count">0</span>
+        </div>
+        <div class="clear"></div>
+        <div class="diggword" id="digg_tips" style="color: red;">不洗碗工作室</div>
+    </div>
+    </div>
+
 </body>
 <script>
       $(function(){

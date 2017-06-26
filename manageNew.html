@@ -1,10 +1,8 @@
-<!Doctype html>
-<html lang="en-US" dir="ltr">
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>消息管理</title>
+    <title>后台管理</title>
     <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
     <script src="js/addel.jquery.js"></script>
     <link rel="shortcut icon" href="favicon.ico" />
@@ -12,39 +10,72 @@
     <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdn.bootcss.com/normalize/7.0.0/normalize.min.css" >
     <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/style.css">
     <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 </head>
 <body>
-    <div class="page-header titleManage">
-        <h1>不洗碗工作室日常新闻管理</h1>
-    </div>
-    <div class="container app">
-        <div class="row" style="margin-top:-90px">
-            <div class="col-sm-6 col-sm-offset-3">
+<header>
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false"> <span class="sr-only">切换导航</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+                <a class="navbar-brand" href="index.html">不洗碗工作室</a> </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown"> <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">admin</a>
+                    </li>
+                    <li><a href="login.html" onClick="if(!confirm('是否确认退出？'))return false;">退出登录</a></li>
+                </ul>
+              </span> </div>
+                </form>
+            </div>
+        </div>
+    </nav>
+</header>
+<div class="row">
+    <aside class="col-sm-3 col-md-2 col-lg-2 sidebar">
+        <ul class="nav nav-sidebar">
+            <li class="active"><a href="manageNew.html">内容管理</a></li>
+        </ul>
+        <ul class="nav nav-sidebar">
+            <li><a href="#" class="slider">轮播图管理</a></li>
+        </ul>
+        <ul class="nav nav-sidebar">
+            <li><a href="settings.html">参数设置</a></li>
 
-                <div class="addel">
-                    <div class="form-group target">
-                        <div class="input-group">
-                            <!--文章标题-->
-                            <input type="text" name="contacts[]" class="form-control" value="">
+        </ul>
+    </aside>
+</div>
+<div class="page-header titleManage">
+    <h1>日常新闻管理</h1>
+</div>
+<div class="container app">
+    <div class="row" style="margin-top:-90px">
+        <div class="col-sm-6 col-sm-offset-3">
 
-                            <span class="input-group-btn">
+            <div class="addel">
+                <div class="form-group target">
+                    <div class="input-group">
+                        <!--文章标题-->
+                        <input type="text" name="contacts[]" class="form-control" value="">
+
+                        <span class="input-group-btn">
                                     <!--编辑修改文章-->
                                 <button type="button" class="btn btn-default" aria-label="Left Align">
                                       <i class="glyphicon glyphicon-pencil" aria-hidden="true"></i>
                                 </button>
-                                    <!--删除文章-->
+                            <!--删除文章-->
                                 <button type="button" class="btn btn-danger addel-delete">
                                     <i class="fa fa-remove"></i>
                                 </button>
                             </span>
-                        </div>
                     </div>
+                </div>
 
-                    <div class="form-group target">
-                        <div class="input-group">
-                            <input type="text" name="contacts[]" class="form-control" id="abc" value="">
-                            <span class="input-group-btn">
+                <div class="form-group target">
+                    <div class="input-group">
+                        <input type="text" name="contacts[]" class="form-control" id="abc" value="">
+                        <span class="input-group-btn">
                                 <button type="button" class="btn btn-default" aria-label="Left Align">
                                       <i class="glyphicon glyphicon-pencil" aria-hidden="true"></i>
                                 </button>
@@ -52,125 +83,125 @@
                                     <i class="fa fa-remove"></i>
                                 </button>
                             </span>
-                        </div>
                     </div>
-
-                    <div class="form-group target">
-                        <div class="input-group">
-                            <input type="text" name="contacts[]" class="form-control" value="">
-                            <span class="input-group-btn">
-                            <button type="button" class="btn btn-default" aria-label="Left Align">
-                                  <i class="glyphicon glyphicon-pencil" aria-hidden="true"></i>
-                            </button>
-                            <button type="button" class="btn btn-danger addel-delete">
-                                <i class="fa fa-remove"></i>
-                            </button>
-                        </span>
-                        </div>
-                    </div>
-
-                    <div class="form-group target">
-                        <div class="input-group">
-                            <input type="text" name="contacts[]" class="form-control" value="">
-                            <span class="input-group-btn">
-                            <button type="button" class="btn btn-default" aria-label="Left Align">
-                                  <i class="glyphicon glyphicon-pencil" aria-hidden="true"></i>
-                            </button>
-                            <button type="button" class="btn btn-danger addel-delete">
-                                <i class="fa fa-remove"></i>
-                            </button>
-                        </span>
-                        </div>
-                    </div>
-
-                    <div class="form-group target">
-                        <div class="input-group">
-                            <input type="text" name="contacts[]" class="form-control" value="">
-                            <span class="input-group-btn">
-                            <button type="button" class="btn btn-default" aria-label="Left Align">
-                                  <i class="glyphicon glyphicon-pencil" aria-hidden="true"></i>
-                            </button>
-                            <button type="button" class="btn btn-danger addel-delete">
-                                <i class="fa fa-remove"></i>
-                            </button>
-                        </span>
-                        </div>
-                    </div>
-
-                    <div class="form-group target">
-                        <div class="input-group">
-                            <input type="text" name="contacts[]" class="form-control" value="">
-                            <span class="input-group-btn">
-                            <button type="button" class="btn btn-default" aria-label="Left Align">
-                                  <i class="glyphicon glyphicon-pencil" aria-hidden="true"></i>
-                            </button>
-                            <button type="button" class="btn btn-danger addel-delete">
-                                <i class="fa fa-remove"></i>
-                            </button>
-                        </span>
-                        </div>
-                    </div>
-                    <!--添加文章-->
-                    <button type="button" class="btn btn-primary btn-block addel-add"><i class="fa fa-plus"></i></button>
-                    <!--/页脚-->
-                    <nav aria-label="Page navigation" class="footer">
-                        <ul class="pagination">
-                            <li>
-                                <a class="Pre" href="#" aria-label="Previous">
-                                    <span aria-hidden="true">&laquo;</span>
-                                </a>
-                            </li>
-                            <li><a class="pageN" href="#">1</a></li>
-                            <li><a class="pageN" href="#">2</a></li>
-                            <li><a class="pageN" href="#">3</a></li>
-                            <li><a class="pageN" href="#">4</a></li>
-                            <li><a class="pageN" href="#">5</a></li>
-                            <li>
-                                <a class="Next"  href="#" aria-label="Next">
-                                    <span aria-hidden="true">&raquo;</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </nav>
                 </div>
+
+                <div class="form-group target">
+                    <div class="input-group">
+                        <input type="text" name="contacts[]" class="form-control" value="">
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-default" aria-label="Left Align">
+                                  <i class="glyphicon glyphicon-pencil" aria-hidden="true"></i>
+                            </button>
+                            <button type="button" class="btn btn-danger addel-delete">
+                                <i class="fa fa-remove"></i>
+                            </button>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="form-group target">
+                    <div class="input-group">
+                        <input type="text" name="contacts[]" class="form-control" value="">
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-default" aria-label="Left Align">
+                                  <i class="glyphicon glyphicon-pencil" aria-hidden="true"></i>
+                            </button>
+                            <button type="button" class="btn btn-danger addel-delete">
+                                <i class="fa fa-remove"></i>
+                            </button>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="form-group target">
+                    <div class="input-group">
+                        <input type="text" name="contacts[]" class="form-control" value="">
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-default" aria-label="Left Align">
+                                  <i class="glyphicon glyphicon-pencil" aria-hidden="true"></i>
+                            </button>
+                            <button type="button" class="btn btn-danger addel-delete">
+                                <i class="fa fa-remove"></i>
+                            </button>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="form-group target">
+                    <div class="input-group">
+                        <input type="text" name="contacts[]" class="form-control" value="">
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-default" aria-label="Left Align">
+                                  <i class="glyphicon glyphicon-pencil" aria-hidden="true"></i>
+                            </button>
+                            <button type="button" class="btn btn-danger addel-delete">
+                                <i class="fa fa-remove"></i>
+                            </button>
+                        </span>
+                    </div>
+                </div>
+                <!--添加文章-->
+                <button type="button" class="btn btn-primary btn-block addel-add"><i class="fa fa-plus"></i></button>
+                <!--/页脚-->
+                <nav aria-label="Page navigation" class="footer">
+                    <ul class="pagination">
+                        <li>
+                            <a class="Pre" href="#" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        </li>
+                        <li><a class="pageN" href="#">1</a></li>
+                        <li><a class="pageN" href="#">2</a></li>
+                        <li><a class="pageN" href="#">3</a></li>
+                        <li><a class="pageN" href="#">4</a></li>
+                        <li><a class="pageN" href="#">5</a></li>
+                        <li>
+                            <a class="Next"  href="#" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
             </div>
         </div>
     </div>
     <div class="modal fade remove" tabindex="-1" role="dialog">
-         <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title">提醒！</h4>
-      </div>
-      <div class="modal-body">
-        <p>确定删除？</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-        <button type="button" class="btn btn-primary go">确定</button>
-      </div>
-    </div><!-- /.modal-content -->
-  </div><!-- /.modal-dialog -->
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">提醒！</h4>
+                </div>
+                <div class="modal-body">
+                    <p>确定删除？</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary go">确定</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
     <div class="modal fade reLogin" tabindex="-1" role="dialog">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">提醒！</h4>
-              </div>
-              <div class="modal-body">
-                <p>重新登录？</p>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                <button type="button" class="btn btn-primary goLogin">确定</button>
-              </div>
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">提醒！</h4>
+                </div>
+                <div class="modal-body">
+                    <p>重新登录？</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary goLogin">确定</button>
+                </div>
             </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
-    <script>
+</div>
+<script>
   $(document).ready(function () {
     $('.addel').addel({
       classes: {
@@ -533,12 +564,11 @@
 
     //创建新文章
     $('.addel-add').click(function () {
-        var token = window.sessionStorage.getItem('token');
-        window.location.href = 'markdown.html';
-        })
+      var token = window.sessionStorage.getItem('token');
+      window.location.href = 'markdown.html';
+    })
 
   })
 </script>
 </body>
 </html>
-

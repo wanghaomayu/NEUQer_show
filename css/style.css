@@ -1,0 +1,179 @@
+@charset "utf-8";
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, button, input, fieldset, legend, input, textarea, p, blockquote, th, td, article, aside, details, figcaption, figure, #footer, #header, hgroup, menu, nav, section {
+	margin: 0;
+	padding: 0;
+}
+body, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, form, button, input, textarea, p, span, th, td, article, aside, nav, section, img, a, table, tbody, tr, label {
+	outline: none;
+	transition: all 0.30s ease-in-out;
+	-webkit-transition: all 0.30s ease-in-out;
+	-moz-transition: all 0.30s ease-in-out;
+	-o-transition: all 0.30s ease-in-out;
+	-ms-transition: all 0.30s ease-in-out;
+}
+dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, p, span, th, tr, td {
+	cursor: default;
+}
+article, aside, details, figcaption, figure, footer, header, hgroup, main, nav, section, summary {
+	display: block;
+}
+body {
+	color: #444;
+	background-color: #EEE;
+	overflow-x: hidden;
+	padding-top: 50px;
+}
+/*公共*/
+a {
+	color: #555;
+	cursor: pointer;
+	text-decoration: none;
+}
+a:hover {
+	color: #3399CC;
+	text-decoration: none;
+}
+li {
+	display: list-item;
+	list-style: none;
+	text-align: -webkit-match-parent;
+}
+button.close:hover span {
+	-moz-transition: all 0.8s ease-in-out;
+	-webkit-transition: all 0.8s ease-in-out;
+	-o-transition: all 0.8s ease-in-out;
+	-ms-transition: all 0.8s ease-in-out;
+	transition: all 0.8s ease-in-out;
+	-moz-transform: rotate(360deg);
+	-webkit-transform: rotate(360deg);
+	-o-transform: rotate(360deg);
+	-ms-transform: rotate(360deg);
+	transform: rotate(360deg);
+}
+
+button.disabled {
+	cursor: no-drop;
+}
+body, input, button, textarea, select {
+	font-family: "Microsoft YaHei", "微软雅黑", "Lantinghei SC", "Open Sans", Arial, "Hiragino Sans GB", "STHeiti", "WenQuanYi Micro Hei", SimSun, sans-serif;
+}
+/*鼠标选中内容样式*/
+::selection {
+	background: #444;
+	color: #FFF;
+}
+::-moz-selection {
+background:#444;
+color:#FFF;
+}
+
+/*布局容器*/
+.container-fluid {
+	padding-right: 0;
+	padding-left: 0;
+	margin-right: 0;
+	margin-left: 0;
+}
+/*栅格系统*/
+.col-lg-1, .col-lg-10, .col-lg-11, .col-lg-12, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-md-1, .col-md-10, .col-md-11, .col-md-12, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-sm-1, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-xs-1, .col-xs-10, .col-xs-11, .col-xs-12, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9 {
+    position: relative;
+    min-height: 1px;
+    padding-right: 10px;
+    padding-left: 10px;
+}
+.table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
+    padding: 8px;
+    line-height: 1.42857143;
+    vertical-align: middle;
+    border-top: 1px solid #ddd;
+}
+
+/*头部样式*/
+.container-fluid>.navbar-header {
+	margin: 0 !important;
+}
+.navbar-default {
+	border-color: #f8f8f8;
+}
+.navbar>.container-fluid .navbar-brand {
+	font-family: TaurusNormal;
+	font-size: 26px;
+	line-height: 26px;
+	color: #777;
+	margin-left: 0 !important;
+}
+.navbar>.container-fluid .navbar-brand:hover {
+	color:#3399CC;
+	-webkit-transform: scale(1.1);
+	transform: scale(1.1);
+	-webkit-transition-timing-function: cubic-bezier(0.47, 2.02, 0.31, -0.36);
+	transition-timing-function: cubic-bezier(0.47, 2.02, 0.31, -0.36);
+}
+.dropdown-menu {
+	min-width: 0px;
+}
+.container-fluid>.navbar-collapse {
+	margin-right: 0px;
+	margin-left: 0px;
+}
+.navbar-nav {
+	margin: 0;
+}
+.row {
+	margin-right: 0px;
+	margin-left: 0px;
+}
+
+/*侧边导航样式*/
+.sidebar {
+	display: none;
+}
+.sidebar::-webkit-scrollbar {
+ width:1px;
+ height:1px;
+ border-radius:20px;
+}
+.sidebar::-webkit-scrollbar-button {
+ display:none;
+}
+.sidebar::-webkit-scrollbar-track-piece {
+ display:none;
+}
+.sidebar::-webkit-scrollbar-thumb {
+ background:#CCC;
+ border-radius:20px;
+}
+
+/*媒体查询 小于768px时侧边栏隐藏*/
+@media (min-width: 768px) {
+.sidebar {
+	position: fixed;
+	top: 50px;
+	bottom: 0;
+	left: 0;
+	z-index: 1000;
+	display: block;
+	padding: 20px;
+	overflow-x: hidden;
+	overflow-y: auto;
+	background-color: #f8f8f8;
+	border-right: 1px solid #eee;
+}
+}
+.nav-sidebar {
+	margin-right: -21px;
+	margin-bottom: 20px;
+	margin-left: -20px;
+}
+.nav-sidebar li a:hover {
+	padding-left: 30px;
+}
+.nav-sidebar > li > a {
+	padding-right: 20px;
+	padding-left: 20px;
+}
+.nav-sidebar > .active > a, .nav-sidebar > .active > a:hover, .nav-sidebar > .active > a:focus {
+	color: #fff;
+	background-color: #3399CC;
+}
+
