@@ -38,14 +38,24 @@
 
 
         /*form*/
-        .form-bg{
-            background:#FFFFFF;
+        .form-bg {
+            background: #FFFFFF;
         }
-            .container{
-                width:35%;
-                margin-top:6%;
-            }
-            .btn-info{margin: auto;display: block;width:100%; margin-top: 40px;}
+
+        .container {
+            width: 35%;
+            margin-top: 6%;
+        }
+
+        .btn-info {
+            margin: auto;
+            display: block;
+            width: 100%;
+            margin-top: 40px;
+        }
+        .id{
+            margin-bottom: 8%;
+        }
     </style>
 </head>
 <body>
@@ -55,12 +65,12 @@
     </div>
     <div class="form-bg" style="padding: 20px 0;">
         <div class="container">
-            <div class="form-group">
-                <label>帐号</label>
-                <input type="email" class="form-control" id="inputEmail3" placeholder="请输入帐号">
+            <div class="input-group id">
+                <span class="input-group-addon" id="basic-addon1">帐号</span>
+                <input type="text" class="form-control" id="inputEmail3" placeholder="请输入帐号" aria-describedby="basic-addon1">
             </div>
-            <div class="form-group">
-                <label>密码</label>
+            <div class="input-group">
+                <span class="input-group-addon" id="basic-addon2">密码</span>
                 <input type="password" class="form-control" id="inputPassword3" placeholder="请输入密码">
             </div>
             <button type="button" class="btn btn-info">登录</button>
